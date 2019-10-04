@@ -4,6 +4,13 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
+//LAYOUTS
+import Blank from './layouts/Blank.vue'
+Vue.component('blank-layout', Blank);
+
+import Dashboard from './layouts/Dashboard.vue'
+Vue.component('dashboard-layout', Dashboard);
+
 Vue.config.productionTip = false
 
 new Vue({
