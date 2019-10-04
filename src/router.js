@@ -6,8 +6,19 @@ Vue.use(Router);
 const routes = [
 	{
 		path: '/',
-		component: () => import('./views/Home.vue')
-	}
+		component: () => import('@/views/Home.vue'),
+		name: 'home'
+	},
+	{
+		path: '/perfil',
+		component: () => import('@/views/Profile.vue'),
+		name: 'profile'
+	},
+	{
+		path: '/bloguear',
+		component: () => import('@/views/Bloguear.vue'),
+		name: 'bloguear'
+	},
 ];
 
 const router = new Router({

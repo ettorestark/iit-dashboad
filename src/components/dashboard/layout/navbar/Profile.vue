@@ -6,8 +6,10 @@
 	        <span class="d-none d-md-inline-block">Sierra Brooks</span>
 	      </a>
 	      <div class="dropdown-menu dropdown-menu-small">
-	        <a class="dropdown-item" href="user-profile-lite.html">
-	          <i class="fas fa-user mr-2"></i> Perfil</a>
+	        <router-link class="dropdown-item" to="/perfil">
+	          <i class="fas fa-user mr-2"></i>
+	          Perfil
+	        </router-link>
 	        <div class="dropdown-divider"></div>
 	        <a class="dropdown-item text-danger" href="#">
 	          <i class="fas fa-sign-out-alt mr-2"></i>

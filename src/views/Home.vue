@@ -3,7 +3,7 @@
 		<div class="page-header row no-gutters py-4">
 			<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
 				<span class="text-uppercase page-subtitle">Escritorio</span>
-				<h3 class="page-title">Vistazo rápido</h3>
+				<h3 class="page-title">Visión general</h3>
 			</div>
 		</div>
 	</div>
