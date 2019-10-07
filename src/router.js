@@ -19,6 +19,11 @@ const routes = [
 		component: () => import('@/views/dashboard/Bloguear.vue'),
 		name: 'bloguear'
 	},
+	{
+		path: '/error',
+		component: () => import('@/views/miscellanies/NotFound.vue'),
+		name: 'notFound'
+	}
 ];
 
 const router = new Router({
