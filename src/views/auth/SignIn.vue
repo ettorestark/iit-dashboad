@@ -1,27 +1,29 @@
 <template>
 	<div class="viewport d-flex justify-content-center align-items-center">
 		<div class="col-lg-4">
-			<form>
+			<form @submit.prevent="signIn">
 				<div class="form-group text-center">
 					<img src="img/icons/brand.png"/>
 				</div>
 				<div class="form-group">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">
-							<i class="fas fa-envelope"></i>
-						</span>
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fas fa-envelope"></i>
+							</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Correo electrónico" v-model="form.email">
 					</div>
-					<input type="text" class="form-control" placeholder="Correo electrónico"> </div>
 				</div>
 				<div class="form-group">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-						<span class="input-group-text">
-							<i class="fas fa-lock"></i>
-						</span>
+							<span class="input-group-text">
+								<i class="fas fa-lock"></i>
+							</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Contraseña" v-model="form.password">
 					</div>
-					<input type="text" class="form-control" placeholder="Contraseña" aria-label="Username"> </div>
 				</div>
 				<div class="form-group">
 					<router-link to="/">
@@ -29,10 +31,10 @@
 					</router-link>
 				</div>
 				<div class="form-group">
-					<router-link to="/" class="btn btn-primary btn-block">
+					<button type="submit" class="btn btn-primary btn-block">
 						<i class="fas fa-sign-in-alt mr-1"></i>
 						Ingresar
-					</router-link>	 
+					</button>	 
 				</div>
 				<div class="form-group">
 					<button class="btn btn-secondary btn-block">
@@ -51,3 +53,30 @@
 		height: 100vh;
 	}
 </style>
+
+<script>
+	export default {
+		data() {
+			return {
+				form: {
+					email: '',
+					password: ''
+				}
+			}
+		},
+
+		methods: {
+			signIn() {
+				let email = this.form.email;
+				let password = this.form.password;
+				this.$store.dispatch('login', {email, password})
+					.then(response => {
+						this.$router.replace('/');
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			}
+		}
+	}
+</script>
