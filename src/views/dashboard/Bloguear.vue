@@ -2,8 +2,8 @@
 	<div>
 		<div class="page-header row no-gutters py-4">
 			<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-				<span class="text-uppercase page-subtitle">Escritorio</span>
-				<h3 class="page-title">Visión general</h3>
+				<span class="text-uppercase page-subtitle">Blog</span>
+				<h3 class="page-title">Agregar nuevo post</h3>
 			</div>
 		</div>
 		<div class="row">
