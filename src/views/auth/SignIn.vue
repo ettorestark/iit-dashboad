@@ -30,8 +30,15 @@
 				</div>
 				<div class="form-group">
 					<router-link to="/" class="btn btn-primary btn-block">
+						<i class="fas fa-sign-in-alt mr-1"></i>
 						Ingresar
 					</router-link>	 
+				</div>
+				<div class="form-group">
+					<button class="btn btn-secondary btn-block">
+						<i class="fab fa-google mr-1"></i>
+						Ingresar con Google
+					</button>
 				</div>
 			</form>
 		</div>
