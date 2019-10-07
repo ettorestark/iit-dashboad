@@ -39,9 +39,13 @@
 </template>
 
 <script>
-  console.log(document.querySelectorAll('#sidebar .nav-link').forEach(element => {
-    element.addEventListener('click', () => {
-      console.log('asd');
-    });
-  }));
+  export default {
+    mounted() {
+      document.querySelectorAll('#sidebar .nav-link').forEach(e => {
+        e.addEventListener('click', () => {
+          document.getElementById('sidebar').classList.remove('open');
+        })
+      });
+    }
+  }
 </script>
