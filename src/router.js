@@ -19,6 +19,17 @@ const routes = [
 		component: () => import('@/views/dashboard/Bloguear.vue'),
 		name: 'bloguear'
 	},
+
+	//AUTHENTICATION ROUTES
+	{
+		path: '/ingresar',
+		component: () => import('@/views/auth/SignIn.vue'),
+		name: 'signIn',
+		meta: {
+			layout: 'default'
+		}
+	},
+	//ERROR ROUTES
 	{
 		path: '/error',
 		component: () => import('@/views/miscellanies/NotFound.vue'),
