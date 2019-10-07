@@ -24,13 +24,13 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/bloguear">
               <i class="fas fa-plus"></i>
-              <span>Bloguear</span>
+              <span>Agregar un post</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/">
               <i class="fas fa-plus"></i>
-              <span>Agregar proyecto</span>
+              <span>Agregar un proyecto</span>
             </router-link>
           </li>
         </ul>
