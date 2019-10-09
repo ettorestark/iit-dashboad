@@ -5,7 +5,7 @@ Vue.use(Router);
 
 const routes = [
 	{
-		path: '/',
+		path: '/home',
 		component: () => import('@/views/dashboard/Home.vue'),
 		name: 'home'
 	},
@@ -22,7 +22,7 @@ const routes = [
 
 	//AUTHENTICATION ROUTES
 	{
-		path: '/ingresar',
+		path: '/',
 		component: () => import('@/views/auth/SignIn.vue'),
 		name: 'signIn',
 		meta: {
