@@ -2,8 +2,8 @@
 	<div class="viewport d-flex justify-content-center align-items-center">
 		<div class="col-lg-4">
 			<form @submit.prevent="signIn">
-				<div class="form-group text-center">
-					<img src="img/icons/brand.png"/>
+				<div class="form-group text-center mb-4">
+					<img src="img/icons/brand-test.png"/>
 				</div>
 				<div class="form-group">
 					<div class="input-group mb-3">
@@ -55,6 +55,7 @@
 </style>
 
 <script>
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
@@ -67,15 +68,22 @@
 
 		methods: {
 			signIn() {
-				let email = this.form.email;
-				let password = this.form.password;
-				this.$store.dispatch('login', {email, password})
+				fetch('http://integralit.test/api/user/sign_in',{
+					method: 'POST',
+					headers: {
+						'Accept': '*/*'
+					},
+					body: JSON.stringify({
+						email: 'ricardo@test.com',
+						password: 'password'
+					})
+				})
 					.then(response => {
-						this.$router.replace('/');
+						console.log(response);
 					})
 					.catch(err => {
 						console.log(err);
-					});
+					})
 			}
 		}
 	}

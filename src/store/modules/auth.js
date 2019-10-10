@@ -31,7 +31,7 @@ const actions = {
 	login({commit}, data) {
 		return new Promise((resolve, reject) => {
 			commit('auth_request');
-			axios.post('http://integralit.test/api/user/sign_in',{
+			axios.post('integralit.test/api/user/sign_in',{
 					email: data.email,
 					password: data.password
 				})
