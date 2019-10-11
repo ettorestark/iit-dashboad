@@ -22,20 +22,26 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link bar">
-              <span>Publicaciones</span>
+            <a href="#" class="nav-link nav-bar">
+              <span>PUBLICACIONES</span>
             </a>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/bloguear">
-              <i class="fas fa-plus"></i>
-              <span>Post</span>
+              <i class="fas fa-list"></i>
+              <span>Vista previa</span>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/">
+            <router-link class="nav-link" to="/bloguear">
               <i class="fas fa-plus"></i>
-              <span>Proyecto</span>
+              <span>Agregar</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/bloguear">
+              <i class="fas fa-edit"></i>
+              <span>Borradores</span>
             </router-link>
           </li>
         </ul>

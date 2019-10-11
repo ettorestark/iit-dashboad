@@ -1683,6 +1683,10 @@ i.material-icons {
   .nav-link.disabled {
     color: #868e96; }
 
+.nav-bar {
+  margin: 0 0;
+}
+
 .nav-tabs {
   border-bottom: 1px solid #d1d4d8; }
   .nav-tabs .nav-item {
