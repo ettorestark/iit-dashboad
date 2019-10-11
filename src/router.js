@@ -16,7 +16,7 @@ const routes = [
 	},
 	{
 		path: '/bloguear',
-		component: () => import('@/views/dashboard/Bloguear.vue'),
+		component: () => import('@/views/dashboard/post/Add.vue'),
 		name: 'bloguear'
 	},
 
