@@ -77,37 +77,11 @@
               <div class="card-header border-bottom">
                 <h6 class="m-0">Categorías</h6>
               </div>
-              <div class='card-body p-0'>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item px-3 pb-2">
-                    <div class="custom-control custom-checkbox mb-1">
-                      <input type="checkbox" class="custom-control-input" id="category2" checked>
-                      <label class="custom-control-label" for="category2">Eventos</label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-1">
-                      <input type="checkbox" class="custom-control-input" id="category3">
-                      <label class="custom-control-label" for="category3">Informática</label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-1">
-                      <input type="checkbox" class="custom-control-input" id="category4">
-                      <label class="custom-control-label" for="category4">Seguridad</label>
-                    </div>
-                    <div class="custom-control custom-checkbox mb-1">
-                      <input type="checkbox" class="custom-control-input" id="category4">
-                      <label class="custom-control-label" for="category4">Telecomunicaciones</label>
-                    </div>
-                  </li>
-                  <li class="list-group-item d-flex px-3">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Nueva cateogoría" aria-label="Add new category" aria-describedby="basic-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-white px-2" type="button">
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+              <div class='card-body p-3'>
+                <select id="inputState" class="form-control">
+                  <option selected>Elegir...</option>
+                  <option>...</option>
+                </select>
               </div>
             </div>
 
