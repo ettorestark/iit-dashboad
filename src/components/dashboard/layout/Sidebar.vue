@@ -16,7 +16,7 @@
       <div class="nav-wrapper">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <router-link class="nav-link active" to="/">
+            <router-link class="nav-link" to="/">
               <i class="fas fa-home"></i>
               <span>Inicio</span>
             </router-link>

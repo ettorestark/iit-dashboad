@@ -9,20 +9,35 @@
 		<div class="row">
           <div class="col-lg-9 col-md-12">
             <!-- Add New Post Form -->
+
             <div class="card card-small mb-3">
               <div class="card-body">
                 <form class="add-new-post">
                   <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" placeholder="Título">
+                    <input type="text" placeholder="Título de tu publicación" class="form-control">
                   </div>
                   <div class="form-group">
-                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Slug">
-                  </div>
-                  <div class="form-group">
-                    <textarea rows="4" class="form-control" placeholder="Excerpt">
-                    </textarea>
+                    <input type="text" placeholder="SLUG o URL amigable" class="form-control">
                   </div>
                   <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
+                </form>
+              </div>
+            </div>
+
+            <div class="card card-small mb-3">
+              <div class="card-header border-bottom">
+                <h6 class="m-0">
+                  <i class="fas fa-search mr-2"></i>SEO
+                </h6>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                      <textarea placeholder="Meta description" rows="3" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <input placeholder="Meta keywords" class="form-control"/>
+                  </div>
                 </form>
               </div>
             </div>

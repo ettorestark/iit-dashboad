@@ -515,7 +515,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   background-color: #17c671; }
 
 .was-validated .custom-toggle .custom-control-input:invalid ~ .custom-control-label::after, .custom-toggle .custom-control-input.is-invalid ~ .custom-control-label::after {
-  background-color: #eb8c95; }
+  background-color: #eb8c95;   }
 
 .was-validated .custom-toggle .custom-control-input:invalid:focus ~ .custom-control-label::before, .custom-toggle .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
   box-shadow: 0 0.313rem 0.719rem rgba(23, 198, 113, 0.1), 0 0.156rem 0.125rem rgba(0, 0, 0, 0.06); }
