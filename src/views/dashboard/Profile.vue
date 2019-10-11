@@ -12,7 +12,7 @@
               <div class="card-header border-bottom text-center">
                 <div class="mb-3 mx-auto">
                   <img class="rounded-circle" src="images/avatars/0.jpg" alt="User Avatar" width="110"> </div>
-                <h4 class="mb-0">Sierra Brooks</h4>
+                <h4 class="mb-0">Juan Carlos Paredes Bruno</h4>
                 <span class="text-muted d-block mb-2">CEO & FOUNDER</span>
               </div>
               <ul class="list-group list-group-flush">
@@ -36,15 +36,15 @@
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="feFirstName">Nombres</label>
-                            <input type="text" class="form-control" id="feFirstName" placeholder="First Name" value="Sierra"> </div>
+                            <input type="text" class="form-control" id="feFirstName" placeholder="First Name" value="Juan Carlos"> </div>
                           <div class="form-group col-md-6">
                             <label for="feLastName">Apellidos</label>
-                            <input type="text" class="form-control" id="feLastName" placeholder="Last Name" value="Brooks"> </div>
+                            <input type="text" class="form-control" id="feLastName" placeholder="Last Name" value="Paredes Bruno"> </div>
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="feEmailAddress">Email</label>
-                            <input type="email" class="form-control" id="feEmailAddress" placeholder="Email" value="sierra@example.com"> </div>
+                            <input type="email" class="form-control" id="feEmailAddress" placeholder="Email" value="jcpared@integralit.com.pe"> </div>
                           <div class="form-group col-md-6">
                             <label for="fePassword">Password</label>
                             <input type="password" class="form-control" id="fePassword" placeholder="Password"> </div>
