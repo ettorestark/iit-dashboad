@@ -14,9 +14,15 @@ const routes = [
 		component: () => import('@/views/dashboard/Profile.vue'),
 		name: 'profile'
 	},
+	//BLOGS
 	{
 		path: '/bloguear',
 		component: () => import('@/views/dashboard/post/Add.vue'),
+		name: 'bloguear'
+	},
+		{
+		path: '/borradores',
+		component: () => import('@/views/dashboard/post/Drafts.vue'),
 		name: 'bloguear'
 	},
 
