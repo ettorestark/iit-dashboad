@@ -1,48 +1,30 @@
 <template>
 	<div class="viewport d-flex justify-content-center align-items-center">
-		<div class="col-lg-4">
-			<form @submit.prevent="signIn">
-				<div class="form-group text-center mb-4">
-					<img src="img/icons/brand-test.png"/>
-				</div>
-				<div class="form-group">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">
-								<i class="fas fa-envelope"></i>
-							</span>
-						</div>
-						<input type="text" class="form-control" placeholder="Correo electrónico" v-model="form.email">
+		<div class="col-lg-4 col-xl-3">
+			<div id="signIn" class="card p-4">
+				<form @submit.prevent="signIn">
+					<div class="form-group text-left mb-4">
+						<img src="img/icons/brand-3.png"/>
 					</div>
-				</div>
-				<div class="form-group">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">
-								<i class="fas fa-lock"></i>
-							</span>
-						</div>
-						<input type="text" class="form-control" placeholder="Contraseña" v-model="form.password">
+					<div class="form-group">
+						<h4 class="font-weight-bold">Iniciar sesión</h4>
 					</div>
-				</div>
-				<div class="form-group">
-					<router-link to="/">
-						¿Olvidaste tu contraseña?
-					</router-link>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block">
-						<i class="fas fa-sign-in-alt mr-1"></i>
-						Ingresar
-					</button>	 
-				</div>
-				<div class="form-group">
-					<button class="btn btn-secondary btn-block">
-						<i class="fab fa-google mr-1"></i>
-						Ingresar con Google
-					</button>
-				</div>
-			</form>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Correo electrónico">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Contraseña">
+					</div>
+					<div class="form-group">
+						<router-link to="/dashboard">¿Olvidaste tu contraseña?</router-link>
+					</div>
+					<div class="form-group mt-4 text-right">
+						<button type="submit" class="btn btn-primary">
+							Ingresar
+						</button>	 
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </template>
@@ -51,6 +33,25 @@
 	.viewport {
 		width: 100vw;
 		height: 100vh;
+		background-image: url('/images/background.png');
+		background-size: cover;
+	}
+
+	#signIn {
+		opacity: 0.95;
+	}
+	
+	#signIn input[type=text] {
+		border: none;
+		padding: 0.8em 0;
+		border-radius: none;
+		border-bottom:  1px solid #e8412a;
+		transition: border-bottom .4s;
+	}
+
+	#signIn input[type=text]:hover {
+		box-shadow: none;
+		border-bottom:  1px solid #444444;
 	}
 </style>
 
