@@ -1,6 +1,6 @@
 <template>
 	<div class="viewport d-flex justify-content-center align-items-center">
-		<div class="col-lg-4 col-xl-3">
+		<div class="col-lg-4 col-xl-4">
 			<div id="signIn" class="card p-4">
 				<form @submit.prevent="signIn">
 					<div class="form-group text-left mb-4">
@@ -38,7 +38,9 @@
 	}
 
 	#signIn {
-		opacity: 0.95;
+		opacity: 0.96;
+
+		box-shadow: 30px 30px 30px rgba(0,0,0,0.3);
 	}
 	
 	#signIn input[type=text] {
