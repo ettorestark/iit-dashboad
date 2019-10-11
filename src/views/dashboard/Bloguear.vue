@@ -12,8 +12,16 @@
             <div class="card card-small mb-3">
               <div class="card-body">
                 <form class="add-new-post">
-                  <input class="form-control form-control-lg mb-3" type="text" placeholder="Título">
-                  <input class="form-control form-control-lg mb-3" type="text" placeholder="Slug">
+                  <div class="form-group">
+                    <input class="form-control form-control-lg" type="text" placeholder="Título">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Slug">
+                  </div>
+                  <div class="form-group">
+                    <textarea rows="4" class="form-control" placeholder="Excerpt">
+                    </textarea>
+                  </div>
                   <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
                 </form>
               </div>
