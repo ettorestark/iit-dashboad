@@ -22,6 +22,11 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link bar">
+              <span>Publicaciones</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" to="/bloguear">
               <i class="fas fa-plus"></i>
               <span>Post</span>
