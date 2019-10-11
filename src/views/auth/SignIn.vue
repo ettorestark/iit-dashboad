@@ -68,15 +68,18 @@
 
 		methods: {
 			signIn() {
-				fetch('http://integralit.test/api/user/sign_in',{
+				let data = {
+					"email": 'ricardo@test.com',
+					"password": 'password'
+				};
+
+				fetch('http://integralit.test/api/user/sign_in', {
 					method: 'POST',
 					headers: {
-						'Accept': '*/*'
+						'Content-Type': 'application/json'
+
 					},
-					body: JSON.stringify({
-						email: 'ricardo@test.com',
-						password: 'password'
-					})
+					body: JSON.stringify(data)
 				})
 					.then(response => {
 						console.log(response);
