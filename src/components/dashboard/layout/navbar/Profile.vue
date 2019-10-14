@@ -5,8 +5,10 @@
         </a>
         <div class="dropdown-menu dropdown-menu-small">
           <router-link to="/perfil" class="dropdown-item">
-            <i class="fas fa-user-alt"></i>
             Perfil
+          </router-link>
+          <router-link to="/perfil/editar" class="dropdown-item">
+            Editar perfil
           </router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="#">

@@ -9,9 +9,15 @@ const routes = [
 		component: () => import('@/views/dashboard/Home.vue'),
 		name: 'home'
 	},
+	//PERFIL
 	{
 		path: '/perfil',
 		component: () => import('@/views/dashboard/user/Profile.vue'),
+		name: 'profile'
+	},
+	{
+		path: '/perfil/editar',
+		component: () => import('@/views/dashboard/user/EditProfile.vue'),
 		name: 'profile'
 	},
 	//PUBLICACIONES
