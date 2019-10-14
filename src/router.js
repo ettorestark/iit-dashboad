@@ -14,16 +14,18 @@ const routes = [
 		component: () => import('@/views/dashboard/Profile.vue'),
 		name: 'profile'
 	},
-	//BLOGS
+	//PUBLICACIONES
 	{
-		path: '/bloguear',
+		path: '/publicaciones',
+		component: () => import('@/views/dashboard/post/List.vue'),
+	},
+	{
+		path: '/publicaciones/agregar',
 		component: () => import('@/views/dashboard/post/Add.vue'),
-		name: 'bloguear'
 	},
 		{
-		path: '/borradores',
+		path: '/publicaciones/borradores',
 		component: () => import('@/views/dashboard/post/Drafts.vue'),
-		name: 'bloguear'
 	},
 
 	//AUTHENTICATION ROUTES

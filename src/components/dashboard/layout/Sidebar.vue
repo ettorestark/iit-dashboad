@@ -30,9 +30,9 @@
             <span>Publicaciones</span>
           </a>
           <div class="dropdown-menu dropdown-menu-small">
-            <a class="dropdown-item " href="user-profile.html">Listar</a>
-            <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
-            <a class="dropdown-item " href="edit-user-profile.html">Borradores</a>
+            <router-link to="/publicaciones" class="dropdown-item">Listar</router-link>
+            <router-link to="/publicaciones/agregar" class="dropdown-item">Agregar</router-link>
+            <router-link to="/publicaciones/borradores" class="dropdown-item">Borradores</router-link>
           </div>
         </li>
         <li class="nav-item dropdown">

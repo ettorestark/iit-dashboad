@@ -4,7 +4,7 @@
           <img class="user-avatar rounded-circle mr-2" src="images/avatars/0.jpg" alt="User Avatar"> <span class="d-none d-md-inline-block">Juan Paredes</span>
         </a>
         <div class="dropdown-menu dropdown-menu-small">
-          <router-link to="/profile" class="dropdown-item">
+          <router-link to="/perfil" class="dropdown-item">
             <i class="fas fa-user-alt"></i>
             Perfil
           </router-link>
