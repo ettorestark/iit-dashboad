@@ -6,8 +6,5 @@
 				<h3 class="page-title">Editar</h3>
 			</div>
 		</div>
-   
-
-   
 	</div>
 </template>

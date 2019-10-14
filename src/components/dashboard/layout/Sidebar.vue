@@ -22,6 +22,19 @@
           </a>
         </li>
       </ul>
+      <h6 class="main-sidebar__nav-title">Administrar usuarios</h6>
+      <ul class="nav nav--no-borders flex-column">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+            <i class="fas fa-users"></i>
+            <span>Usuarios</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-small">
+            <router-link to="/publicaciones" class="dropdown-item">Listar</router-link>
+            <router-link to="/publicaciones/agregar" class="dropdown-item">Agregar</router-link>
+          </div>
+        </li>
+      </ul>
       <h6 class="main-sidebar__nav-title">Web</h6>
       <ul class="nav nav--no-borders flex-column">
         <li class="nav-item dropdown">
