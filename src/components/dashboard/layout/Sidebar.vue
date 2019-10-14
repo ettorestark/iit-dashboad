@@ -31,7 +31,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-small">
             <router-link to="/usuarios" class="dropdown-item">Listar</router-link>
-            <router-link to="/publicaciones/agregar" class="dropdown-item">Agregar</router-link>
+            <router-link to="/usuarios/agregar" class="dropdown-item">Agregar</router-link>
           </div>
         </li>
       </ul>

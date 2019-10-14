@@ -22,6 +22,10 @@ const routes = [
 	},
 	//USUARIOS
 	{
+		path: '/usuarios/agregar',
+		component: () => import('@/views/dashboard/users/Add.vue'),
+	},
+	{
 		path: '/usuarios',
 		component: () => import('@/views/dashboard/users/List.vue'),
 	},
