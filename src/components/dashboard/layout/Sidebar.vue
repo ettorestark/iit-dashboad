@@ -16,10 +16,10 @@
     <div class="nav-wrapper">
       <ul class="nav nav--no-borders flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="index-2.html">
+          <router-link to="/dashboard" class="nav-link active">
             <i class="fas fa-home"></i>
             <span>Inicio</span>
-          </a>
+          </router-link>
         </li>
       </ul>
       <h6 class="main-sidebar__nav-title">Administrar usuarios</h6>
@@ -30,7 +30,7 @@
             <span>Usuarios</span>
           </a>
           <div class="dropdown-menu dropdown-menu-small">
-            <router-link to="/publicaciones" class="dropdown-item">Listar</router-link>
+            <router-link to="/usuarios" class="dropdown-item">Listar</router-link>
             <router-link to="/publicaciones/agregar" class="dropdown-item">Agregar</router-link>
           </div>
         </li>
