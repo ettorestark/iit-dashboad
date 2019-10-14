@@ -19,9 +19,9 @@
 						<router-link to="/dashboard">¿Olvidaste tu contraseña?</router-link>
 					</div>
 					<div class="form-group mt-4 text-right">
-						<button type="submit" class="btn btn-primary">
+						<router-link to="/dashboard" type="submit" class="btn btn-primary">
 							Ingresar
-						</button>	 
+						</router-link>	 
 					</div>
 				</form>
 			</div>
@@ -40,7 +40,7 @@
 	#signIn {
 		opacity: 0.96;
 
-		box-shadow: 30px 30px 30px rgba(0,0,0,0.3);
+		box-shadow: 30px 40px 30px rgba(0,0,0,0.7);
 	}
 	
 	#signIn input[type=text] {
