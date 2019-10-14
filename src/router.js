@@ -11,7 +11,7 @@ const routes = [
 	},
 	{
 		path: '/perfil',
-		component: () => import('@/views/dashboard/Profile.vue'),
+		component: () => import('@/views/dashboard/user/Profile.vue'),
 		name: 'profile'
 	},
 	//PUBLICACIONES
