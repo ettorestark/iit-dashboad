@@ -98,7 +98,11 @@
             </div>
           </div>
           <div class="card-footer border-top">
-            <button class="btn btn-sm btn-white d-table mx-auto">Ver más</button>
+            <router-link to="/actividades">
+              <button class="btn btn-sm btn-white d-table mx-auto">
+                Ver más
+              </button>
+            </router-link>
           </div>
         </div>
       </div>

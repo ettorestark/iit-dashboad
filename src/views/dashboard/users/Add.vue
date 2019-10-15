@@ -122,7 +122,7 @@
 					lastnames: 'De Tal',
 					address: 'La Libertad, Trujillo',
 					phone: '000000000',
-					email: 'fulanito@integralit.com.test',
+					email: 'fulanito@integralit.com.pe',
 					role: 'Practicante'
 				}
 			}

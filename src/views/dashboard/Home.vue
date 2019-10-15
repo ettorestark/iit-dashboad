@@ -72,7 +72,7 @@
         <div class="card-footer border-top">
           <div class="row">
             <div class="col text-center view-report">
-              <button type="submit" class="btn btn-white">Ver todos los mensajes</button>
+              <router-link class="btn btn-white" to="/mensajes">Ver todos los mensajes</router-link>
             </div>
           </div>
         </div>

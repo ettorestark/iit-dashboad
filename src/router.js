@@ -9,6 +9,11 @@ const routes = [
 		component: () => import('@/views/dashboard/Home.vue'),
 		name: 'home'
 	},
+	//CENTRO DE MENSAJES
+	{
+		path: '/mensajes',
+		component: () => import('@/views/dashboard/messages/All.vue'),
+	},
 	//PROFILE
 	{
 		path: '/perfil',
@@ -19,6 +24,11 @@ const routes = [
 		path: '/perfil/editar',
 		component: () => import('@/views/dashboard/profile/Edit.vue'),
 		name: 'profile'
+	},
+	//CENTRO DE ACTIVIDAD
+	{
+		path: '/actividades',
+		component: () => import('@/views/dashboard/activity/Personal.vue')
 	},
 	//USUARIOS
 	{
