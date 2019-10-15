@@ -54,7 +54,7 @@ const routes = [
 	},
 	//ERROR ROUTES
 	{
-		path: '/error',
+		path: '*',
 		component: () => import('@/views/miscellanies/NotFound.vue'),
 		name: 'notFound'
 	}
