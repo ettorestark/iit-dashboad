@@ -15,9 +15,6 @@
         </div>
         <div class="card-body p-0">
           <div class="blog-comments__item d-flex p-3">
-            <div class="blog-comments__avatar mr-3">
-              <img src="images/avatars/sergey.jpg" alt="User avatar" />
-            </div>
             <div class="blog-comments__content">
               <div class="blog-comments__meta text-muted">
                 <a class="text-secondary" href="#">Sergey Brin</a> – Hace 3 días
@@ -33,9 +30,6 @@
             </div>
           </div>
           <div class="blog-comments__item d-flex p-3">
-            <div class="blog-comments__avatar mr-3">
-              <img src="images/avatars/jeff.jpg" alt="User avatar" />
-            </div>
             <div class="blog-comments__content">
               <div class="blog-comments__meta text-muted">
                 <a class="text-secondary" href="#">Jeff Bezos</a> on <a class="text-secondary" href="#">Hello World!</a> <span class="text-muted">– Hace 4 días</span>
@@ -51,9 +45,6 @@
             </div>
           </div>
           <div class="blog-comments__item d-flex p-3">
-            <div class="blog-comments__avatar mr-3">
-              <img src="images/avatars/jack.jpg" alt="User avatar" />
-            </div>
             <div class="blog-comments__content">
               <div class="blog-comments__meta text-muted">
                 <a class="text-secondary" href="#">Jack Dorsey</a> on <a class="text-secondary" href="#">Hello World!</a> <span class="text-muted">– Hace 5 días</span>

@@ -19,9 +19,9 @@
 						<router-link to="/dashboard">¿Olvidaste tu contraseña?</router-link>
 					</div>
 					<div class="form-group mt-4 text-right">
-						<router-link to="/dashboard" type="submit" class="btn btn-primary">
+						<button @click="signIn" type="submit" class="btn btn-primary">
 							Ingresar
-						</router-link>	 
+						</button>	 
 					</div>
 				</form>
 			</div>
@@ -72,17 +72,16 @@
 		methods: {
 			signIn() {
 				let data = {
-					"email": 'ricardo@test.com',
-					"password": 'password'
+					email: 'ricardo@test.com',
+					password: 'password'
 				};
 
 				fetch('http://integralit.test/api/user/sign_in', {
 					method: 'POST',
+					body: JSON.stringify(data),
 					headers: {
 						'Content-Type': 'application/json'
-
-					},
-					body: JSON.stringify(data)
+					}
 				})
 					.then(response => {
 						console.log(response);
