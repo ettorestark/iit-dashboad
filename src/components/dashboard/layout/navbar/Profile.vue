@@ -5,9 +5,11 @@
         </a>
         <div class="dropdown-menu dropdown-menu-small">
           <router-link to="/perfil" class="dropdown-item">
+            <i class="fas fa-user text-secondary mr-1"></i>
             Perfil
           </router-link>
           <router-link to="/perfil/editar" class="dropdown-item">
+            <i class="fas fa-edit text-secondary mr-1"></i>
             Editar perfil
           </router-link>
           <div class="dropdown-divider"></div>
