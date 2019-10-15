@@ -78,6 +78,24 @@
                 <p>Agregaste a un nuevo usuario.</p>
               </div>
             </div>
+            <div class="user-activity__item pr-3 py-3">
+              <div class="user-activity__item__icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <div class="user-activity__item__content">
+                <span class="text-light">Hace 10 días</span>
+                <p>Agregaste a un nuevo usuario.</p>
+              </div>
+            </div>
+            <div class="user-activity__item pr-3 py-3">
+              <div class="user-activity__item__icon">
+                <i class="fas fa-plus-circle"></i>
+              </div>
+              <div class="user-activity__item__content">
+                <span class="text-light">Hace 12 días</span>
+                <p>Agregaste una nueva publicación.</p>
+              </div>
+            </div>
           </div>
           <div class="card-footer border-top">
             <button class="btn btn-sm btn-white d-table mx-auto">Ver más</button>
