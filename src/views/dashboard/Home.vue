@@ -20,7 +20,7 @@
             </div>
             <div class="blog-comments__content">
               <div class="blog-comments__meta text-muted">
-                <a class="text-secondary" href="#">Sergey Brin</a> – Hace 3 días</span>
+                <a class="text-secondary" href="#">Sergey Brin</a> – Hace 3 días
               </div>
               <p class="m-0 my-1 mb-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida malesuada massa...</p>
               <div class="blog-comments__actions">
@@ -91,7 +91,7 @@
           </div>
           <div class="blog-comments__content">
             <div class="blog-comments__meta text-muted">
-              <a class="text-secondary" href="#">Michael Faraday</a> – Hace 3 días</span>
+              <a class="text-secondary" href="#">Michael Faraday</a> – Hace 3 días
             </div>
             <p class="m-0 my-1 mb-2 text-muted">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed orci viverra augue interdum dictum quis et velit. Nulla vitae volutpat elit. Sed erat est, placerat a dui et, venenatis rhoncus tortor. Fusce venenatis, augue vitae euismod lacinia, est nibh rutrum arcu, vitae gravida nunc lectus in ipsum.
