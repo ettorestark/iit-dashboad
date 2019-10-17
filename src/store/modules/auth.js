@@ -25,6 +25,11 @@ const mutations = {
 	auth_error(state) {
 		state.token = '';
 		state.status = '';
+	},
+
+	auth_sign_out(state) {
+		state.token = '';
+		state.status = '';
 	}
 };
 
@@ -49,6 +54,24 @@ const actions = {
 					reject(err);
 				});
 		});
+	},
+
+	signOut({commit}) {
+		return new Promise((resolve, reject) => {
+			axios.get('http://integralit.test/api/user/sign_out', {
+				headers: {
+					'Authorization': 'Bearer ' + localStorage.getItem('token')
+				}
+			})
+			.then(response => {
+				commit('auth_sign_out');
+				localStorage.removeItem('token');
+				resolve(response);
+			})
+			.catch(err => {
+				rejetc(err);
+			});
+		})
 	}
 };
 
