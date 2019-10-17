@@ -28,10 +28,10 @@ const mutations = {
 };
 
 const actions = {
-	login({commit}, data) {
+	sign_in({commit}, data) {
 		return new Promise((resolve, reject) => {
 			commit('auth_request');
-			axios.post('integralit.test/api/user/sign_in',{
+			axios.post('http://integralit.test/api/user/sign_in',{
 					email: data.email,
 					password: data.password
 				})
@@ -45,7 +45,7 @@ const actions = {
 				.catch(err => {	
 					commit('auth_error');
 					localStorage.removeItem('token');
-					reject(err);
+					reject(err.response.data);
 				});
 		});
 	}

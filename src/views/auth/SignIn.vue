@@ -10,11 +10,11 @@
                 <form>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Dirección de correo electrónico</label>
-                    <input type="email" class="form-control" placeholder="Correo electrónico">
+                    <input type="email" class="form-control" placeholder="Correo electrónico" v-model="form.email">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" placeholder="contraseña">
+                    <input type="password" class="form-control" placeholder="contraseña" v-model="form.password">
                   </div>
                   <div class="form-group mb-3 d-table mx-auto">
                   </div>
@@ -58,21 +58,15 @@
 
 		methods: {
 			signIn() {
-				let data = {
-					email: 'ricardo@test.com',
-					password: 'password'
-				};
-
-				fetch('http://integralit.test/api/user/sign_in', {
-					method: 'POST',
-					body: JSON.stringify(data),
-				})
-					.then(response => {
-						console.log(response);
-					})
-					.catch(err => {
-						console.log(err);
-					})
+        let email = this.form.email;
+        let password = this.form.password;
+        this.$store.dispatch('sign_in', { email, password })
+          .then(response => {
+            console.log(response);
+          })
+          .catch(err => {
+            console.log(err);
+          });
 			}
 		}
 	}
