@@ -10,11 +10,17 @@
                 <form>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Dirección de correo electrónico</label>
-                    <input type="email" class="form-control" placeholder="Correo electrónico" v-model="form.email">
+                    <input type="email" class="form-control" :class="error.email.status" placeholder="Correo electrónico" v-model="form.email">
+                    <div class="invalid-feedback">
+                      {{ error.email.message[0] }}
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" placeholder="contraseña" v-model="form.password">
+                    <input type="password" class="form-control" :class="error.password.status" placeholder="contraseña" v-model="form.password">
+                    <div class="invalid-feedback">
+                      {{ error.password.message[0] }}
+                    </div>
                   </div>
                   <div class="form-group mb-3 d-table mx-auto">
                   </div>
@@ -52,7 +58,17 @@
 				form: {
 					email: '',
 					password: ''
-				}
+				},
+        error: {
+          email: {
+            status: '',
+            message: ''
+          },
+          password: {
+            status: '',
+            message: ''
+          }
+        }
 			}
 		},
 
@@ -60,12 +76,25 @@
 			signIn() {
         let email = this.form.email;
         let password = this.form.password;
+        this.error.email.status = '';
+        this.error.email.message = '';
+        this.error.password.status = '';
+        this.error.password.message = '';
         this.$store.dispatch('sign_in', { email, password })
           .then(response => {
             console.log(response);
           })
           .catch(err => {
-            console.log(err);
+            let errors = err.response.data.errors;
+            if(errors.email) {
+                this.error.email.status = 'is-invalid';
+                this.error.email.message = errors.email;
+            }
+
+            if(errors.password) {
+                this.error.password.status = 'is-invalid';
+                this.error.password.message = errors.password;
+            }
           });
 			}
 		}

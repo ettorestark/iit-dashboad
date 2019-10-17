@@ -23,7 +23,6 @@ const routes = [
 	{
 		path: '/perfil/editar',
 		component: () => import('@/views/dashboard/profile/Edit.vue'),
-		name: 'profile'
 	},
 	//CENTRO DE ACTIVIDAD
 	{
@@ -64,14 +63,14 @@ const routes = [
 		component: () => import('@/views/auth/SignIn.vue'),
 		name: 'signIn',
 		meta: {
-			layout: 'default'
+			layout: 'blank'
 		}
 	},
 	{
 		path: '/restaurar',
 		component: () => import('@/views/auth/ForgotPassword.vue'),
 		meta: {
-			layout: 'default'
+			layout: 'blank'
 		}
 	},
 	//ERROR ROUTES

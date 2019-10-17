@@ -45,7 +45,7 @@ const actions = {
 				.catch(err => {	
 					commit('auth_error');
 					localStorage.removeItem('token');
-					reject(err.response.data);
+					reject(err);
 				});
 		});
 	}
