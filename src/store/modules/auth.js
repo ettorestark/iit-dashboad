@@ -58,20 +58,20 @@ const actions = {
 
 	signOut({commit}) {
 		return new Promise((resolve, reject) => {
-			axios.get('http://integralit.test/api/user/sign_out', {
-				headers: {
-					'Authorization': 'Bearer ' + localStorage.getItem('token')
-				}
-			})
-			.then(response => {
-				commit('auth_sign_out');
-				localStorage.removeItem('token');
-				resolve(response);
-			})
-			.catch(err => {
-				rejetc(err);
-			});
-		})
+			axios.get('http://integralit.test/api/user/sign_out',{
+					headers: {
+						'Authorization': 'Bearer ' + localStorage.getItem('token')
+					}
+				})
+				.then(response => {
+					commit('auth_signout');
+					localStorage.removeItem('token');
+					resolve(response);
+				})
+				.catch(err => {
+					reject(err);
+				})
+		});
 	}
 };
 

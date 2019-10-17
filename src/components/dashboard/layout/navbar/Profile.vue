@@ -13,10 +13,26 @@
             Editar perfil
           </router-link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="#">
+          <button class="dropdown-item text-danger" @click.prevent="signOut">
             <i class="fas fa-sign-out-alt mr-1"></i>
-        	Cerrar sessión
-          </a>
+        	   Cerrar sessión
+          </button>
         </div>
      </li>
 </template>
+
+<script>
+  export default {
+   methods: {
+    signOut() {
+      this.$store.dispatch('signOut')
+        .then(response => {
+          this.$router.replace('/');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+   }
+  }
+</script>
