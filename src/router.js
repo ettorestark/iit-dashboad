@@ -78,7 +78,10 @@ const routes = [
 	{
 		path: '*',
 		component: () => import('@/views/miscellanies/NotFound.vue'),
-		name: 'notFound'
+		name: 'notFound',
+		meta: {
+			layout: 'default'
+		}
 	}
 ];
 
