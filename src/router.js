@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store/store'
 
 Vue.use(Router);
 
@@ -7,54 +8,85 @@ const routes = [
 	{
 		path: '/escritorio',
 		component: () => import('@/views/dashboard/Home.vue'),
-		name: 'home'
+		meta: {
+			auth: true
+		}
 	},
 	//CENTRO DE MENSAJES
 	{
 		path: '/mensajes',
 		component: () => import('@/views/dashboard/messages/All.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	//PROFILE
 	{
 		path: '/perfil',
 		component: () => import('@/views/dashboard/profile/View.vue'),
-		name: 'profile'
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/perfil/editar',
 		component: () => import('@/views/dashboard/profile/Edit.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	//CENTRO DE ACTIVIDAD
 	{
 		path: '/actividades',
-		component: () => import('@/views/dashboard/activity/Personal.vue')
+		component: () => import('@/views/dashboard/activity/Personal.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	//USUARIOS
 	{
 		path: '/usuarios/agregar',
-		component: () => import('@/views/dashboard/users/Add.vue')
+		component: () => import('@/views/dashboard/users/Add.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/usuarios',
-		component: () => import('@/views/dashboard/users/List.vue')
+		component: () => import('@/views/dashboard/users/List.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	//ACTIVIY
 	{
 		path: '/actividad',
-		component: () => import('@/views/dashboard/activity/Personal.vue')
+		component: () => import('@/views/dashboard/activity/Personal.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	//POSTS
 	{
 		path: '/publicaciones',
 		component: () => import('@/views/dashboard/post/List.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/publicaciones/agregar',
 		component: () => import('@/views/dashboard/post/Add.vue'),
+		meta: {
+			auth: true
+		}
 	},
 		{
 		path: '/publicaciones/borradores',
 		component: () => import('@/views/dashboard/post/Drafts.vue'),
+		meta: {
+			auth: true
+		}
 	},
 
 	//AUTHENTICATION
@@ -63,6 +95,7 @@ const routes = [
 		component: () => import('@/views/auth/SignIn.vue'),
 		name: 'signIn',
 		meta: {
+			auth: false,
 			layout: 'blank'
 		}
 	},
@@ -70,6 +103,7 @@ const routes = [
 		path: '/restaurar',
 		component: () => import('@/views/auth/ForgotPassword.vue'),
 		meta: {
+			auth: false,
 			layout: 'blank'
 		}
 	},
@@ -79,6 +113,7 @@ const routes = [
 		component: () => import('@/views/miscellanies/NotFound.vue'),
 		name: 'notFound',
 		meta: {
+			auth: false,
 			layout: 'default'
 		}
 	}
@@ -87,6 +122,15 @@ const routes = [
 const router = new Router({
 	mode: 'history',
 	routes
+});
+
+router.beforeEach((to, from, next) => {
+	let isLoggedIn = store.getters.isLoggedIn;
+	let isAuthRequired = to.matched.some(record => record.meta.auth);
+	next();
+	console.log(isLoggedIn);
+	console.log(isAuthRequired);
+	window.scrollTo(0, 0);
 });
 
 export default router;

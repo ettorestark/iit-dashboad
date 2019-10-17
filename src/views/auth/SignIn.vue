@@ -82,7 +82,7 @@
         this.error.password.message = '';
         this.$store.dispatch('sign_in', { email, password })
           .then(response => {
-            console.log(response);
+            this.$router.replace('/escritorio');
           })
           .catch(err => {
             let errors = err.response.data.errors;
