@@ -1,59 +1,46 @@
 <template>
-	<div class="viewport d-flex justify-content-center align-items-center">
-		<div class="col-lg-4 col-xl-4">
-			<div id="signIn" class="card p-4">
-				<form @submit.prevent="signIn">
-					<div class="form-group text-left mb-4">
-						<img src="img/icons/brand-3.png"/>
-					</div>
-					<div class="form-group">
-						<h4 class="font-weight-bold">Iniciar sesión</h4>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Correo electrónico">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Contraseña">
-					</div>
-					<div class="form-group">
-						<router-link to="/dashboard">¿Olvidaste tu contraseña?</router-link>
-					</div>
-					<div class="form-group mt-4 text-right">
-						<button @click="signIn" type="submit" class="btn btn-primary">
-							Ingresar
-						</button>	 
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    <main class="viewport main-content col">
+      <div class="main-content-container container-fluid px-4 my-auto h-100">
+        <div class="row no-gutters h-100">
+          <div class="col-lg-3 col-md-5 auth-form mx-auto my-auto">
+            <div class="card">
+              <div class="card-body">
+                <img class="auth-form__logo d-table mx-auto mb-3" src="img/icons/icon.png" alt="Shards Dashboards - Register Template">
+                <h5 class="auth-form__title text-center mb-4">Bienvenido al Dashboard de <br/><b>Integral-it</b></h5>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Dirección de correo electrónico</label>
+                    <input type="email" class="form-control" placeholder="Correo electrónico">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" placeholder="contraseña">
+                  </div>
+                  <div class="form-group mb-3 d-table mx-auto">
+                  </div>
+                  <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Acceder</button>
+                </form>
+              </div>
+              <div class="card-footer border-top">
+                <ul class="auth-form__social-icons d-table mx-auto">
+                  <li><a href="#"><i class="fab fa-google"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="auth-form__meta mt-4 text-center">
+              <router-link to="/restaurar">¿Olvidaste tu contraseña?</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 </template>
 
 <style>
 	.viewport {
 		width: 100vw;
 		height: 100vh;
-		background-image: url('/images/background.png');
 		background-size: cover;
-	}
-
-	#signIn {
-		opacity: 0.96;
-
-		box-shadow: 30px 40px 30px rgba(0,0,0,0.7);
-	}
-	
-	#signIn input[type=text] {
-		border: none;
-		padding: 0.8em 0;
-		border-radius: none;
-		border-bottom:  1px solid #e8412a;
-		transition: border-bottom .4s;
-	}
-
-	#signIn input[type=text]:hover {
-		box-shadow: none;
-		border-bottom:  1px solid #444444;
 	}
 </style>
 

@@ -67,6 +67,13 @@ const routes = [
 			layout: 'default'
 		}
 	},
+	{
+		path: '/restaurar',
+		component: () => import('@/views/auth/ForgotPassword.vue'),
+		meta: {
+			layout: 'default'
+		}
+	},
 	//ERROR ROUTES
 	{
 		path: '*',
