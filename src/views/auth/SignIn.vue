@@ -18,7 +18,7 @@
                   </div>
                   <div class="form-group mb-3 d-table mx-auto">
                   </div>
-                  <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Acceder</button>
+                  <button @click.prevent="signIn" class="btn btn-pill btn-accent d-table mx-auto">Acceder</button>
                 </form>
               </div>
               <div class="card-footer border-top">
@@ -66,9 +66,6 @@
 				fetch('http://integralit.test/api/user/sign_in', {
 					method: 'POST',
 					body: JSON.stringify(data),
-					headers: {
-						'Content-Type': 'application/json'
-					}
 				})
 					.then(response => {
 						console.log(response);

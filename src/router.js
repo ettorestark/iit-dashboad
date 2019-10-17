@@ -5,7 +5,7 @@ Vue.use(Router);
 
 const routes = [
 	{
-		path: '/dashboard',
+		path: '/escritorio',
 		component: () => import('@/views/dashboard/Home.vue'),
 		name: 'home'
 	},
