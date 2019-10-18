@@ -33,8 +33,8 @@ const mutations = {
 	},
 
 	check_success(state, user) {
-		state.status = 'sucess';
-		state.user = '';
+		state.status = 'verify sucess';
+		state.user = user;
 	},
 
 	check_err(state) {
@@ -83,7 +83,7 @@ const actions = {
 		});
 	},
 
-	verifyUSer({commit}){
+	verifyUser({commit}){
 		return new Promise((resolve, reject) => {
 			axios.get('http://integralit.test/api/user/check',{ 
 					headers: {

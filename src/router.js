@@ -129,10 +129,23 @@ router.beforeEach((to, from, next) => {
 	let isAuthRequired = to.matched.some(record => record.meta.auth);
 	console.log(isLoggedIn);
 	console.log(isAuthRequired);	
-	if(isAuthRequired && !isLoggedIn) {
-		next('/');
-	}else if(!isAuthRequired && isLoggedIn) {
-		next('/escritorio');
+	if(isAuthRequired) {
+		if(isLoggedIn) {
+			if(localStorage.getItem('token') && !store.state.user) {
+				console.log('Estoy en este caso');
+				store.dispatch('verifyUser')
+					.then(response => {
+						next();
+					})
+					.catch(err => {
+						console.log(err);
+					})
+			}else {
+				next();
+			}
+		}else {
+			next('/');
+		}
 	}else {
 		next();
 	}
