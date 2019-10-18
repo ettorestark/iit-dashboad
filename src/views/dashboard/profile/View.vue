@@ -17,10 +17,10 @@
           </div>
           <div class="card-body p-0">
             <div class="user-details__avatar mx-auto">
-              <img src="images/avatars/0.jpg" alt="User Avatar">
+              <img :src="this.$store.state.auth.user.photo" alt="User Avatar">
             </div>
-            <h4 class="text-center m-0 mt-2">Juan Carlos Paredes Bruno</h4>
-            <p class="text-center text-light m-0 mb-2">CEO & FOUNDER</p>
+            <h4 class="text-center m-0 mt-2">{{ this.$store.state.auth.user.name }} {{ this.$store.state.auth.user.lastname }}</h4>
+            <p class="text-center text-light m-0 mb-2">{{ this.$store.state.auth.user.profile }}</p>
             <ul class="user-details__social user-details__social--primary d-table mx-auto mb-4">
               <li class="mx-1"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
               <li class="mx-1"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
@@ -31,17 +31,17 @@
               <div class="row mb-3">
                 <div class="col w-50">
                   <span>Correo electrónico</span>
-                  <span>jcpared@integralit.com.pe</span>
+                  <span>{{ this.$store.state.auth.user.email }}</span>
                 </div>
                 <div class="col w-50">
                   <span>Ubicación</span>
-                  <span>La libertad, Trujillo</span>
+                  <span>{{ this.$store.state.auth.user.address }}</span>
                 </div>
               </div>
               <div class="row">
                 <div class="col w-50">
                   <span>Celular</span>
-                  <span>+51 943 772 148</span>
+                  <span>{{ this.$store.state.auth.user.phone }}</span>
                 </div>
               </div>
             </div>

@@ -127,12 +127,9 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 	let isLoggedIn = store.getters.isLoggedIn;
 	let isAuthRequired = to.matched.some(record => record.meta.auth);
-	console.log(isLoggedIn);
-	console.log(isAuthRequired);	
 	if(isAuthRequired) {
 		if(isLoggedIn) {
 			if(localStorage.getItem('token') && !store.state.user) {
-				console.log('Estoy en este caso');
 				store.dispatch('verifyUser')
 					.then(response => {
 						next();

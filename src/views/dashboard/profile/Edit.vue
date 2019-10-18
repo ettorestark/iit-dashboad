@@ -20,9 +20,9 @@
               	<div class="col-lg-4">
                   <label for="userProfilePicture" class="text-center w-100 mb-4">Foto de perfil</label>
                   <div class="edit-user-details__avatar m-auto">
-                    <img src="/images/avatars/0.jpg" alt="User Avatar">
+                    <img :src="'/' + this.$store.state.auth.user.photo" alt="User Avatar">
                     <label class="edit-user-details__avatar__change">
-                      <i class="material-icons mr-1">&#xE439;</i>
+                      <i class="fas fa-upload text-primary"></i>
                       <input type="file" id="userProfilePicture" class="d-none">
                     </label>
                   </div>
@@ -32,11 +32,11 @@
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="firstName">Nombres</label>
-                      <input type="text" class="form-control" id="firstName" value="Juan Carlos">
+                      <input type="text" class="form-control" :value="this.$store.state.auth.user.name" readonly>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="lastName">Apellidos</label>
-                      <input type="text" class="form-control" id="lastName" value="Bruno Paredes">
+                      <input type="text" class="form-control" id="lastName" :value="this.$store.state.auth.user.lastname" readonly>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="userLocation">Ubicaciòn</label>
@@ -46,7 +46,7 @@
                             <i class="fas fa-map-marker"></i>
                           </div>
                         </div>
-                        <input type="text" class="form-control" value="La Libertad, Trujillo">
+                        <input type="text" class="form-control" :value="this.$store.state.auth.user.address" readonly>
                       </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -57,7 +57,7 @@
                             <i class="fas fa-phone"></i>
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="phoneNumber" value="+40 1234 567 890">
+                        <input type="text" class="form-control" id="phoneNumber" :value="this.$store.state.auth.user.phone">
                       </div>
                     </div>
                     <div class="form-group col-md-12">
@@ -68,7 +68,7 @@
                             <i class="fas fa-envelope"></i>
                           </div>
                         </div>
-                        <input type="email" class="form-control" id="emailAddress" placeholder="jcpared@integralit.com.pe">
+                        <input type="email" class="form-control" id="emailAddress" :value="this.$store.state.auth.user.email" readonly>
                       </div>
                     </div>
                   </div>
@@ -78,7 +78,7 @@
               <div class="form-row mx-4">
                 <div class="form-group col-md-12">
                   <label for="userBio">Descripción</label>
-                  <textarea style="min-height: 87px;" id="userBio" name="userBio" class="form-control">Ingeniero en Sistemas. Fundador de Integral-it y Pakamuros.</textarea>
+                  <textarea style="min-height: 87px;" id="userBio" name="userBio" class="form-control"></textarea>
                 </div>
               </div>
               <hr>
@@ -166,7 +166,7 @@
               <div class="form-row mx-4">
                 <div class="form-group col-md-4">
                   <label for="firstName">Antigua contraseña</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="**********">
+                  <input type="text" class="form-control" id="firstName" placeholder="Contraseña">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="lastName">Nueva contraseña</label>

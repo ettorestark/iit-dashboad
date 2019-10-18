@@ -17,22 +17,11 @@
 			   <div class="form-row">
 	            <div class="form-group col-md-6">
 	              <label for="firstName">Nombres</label>
-	              <input type="text" class="form-control" v-model="form.names">
+	              <input type="text" class="form-control" v-model="form.name">
 	            </div>
 	            <div class="form-group col-md-6">
 	              <label for="lastName">Apellidos</label>
-	              <input type="text" class="form-control" v-model="form.lastnames">
-	            </div>
-	            <div class="form-group col-md-12">
-	              <label for="emailAddress">Corre Electrónico</label>
-	              <div class="input-group input-group-seamless">
-	                <div class="input-group-prepend">
-	                  <div class="input-group-text">
-	                    <i class="fas fa-envelope"></i>
-	                  </div>
-	                </div>
-	                <input type="email" class="form-control" v-model="form.email">
-	              </div>
+	              <input type="text" class="form-control" v-model="form.lastname">
 	            </div>
 	            <div class="form-group col-md-6">
 	              <label for="userLocation">Ubicaciòn</label>
@@ -64,18 +53,29 @@
 	                  	<i class="fas fa-briefcase"></i>
 	                  </div>
 	                </div>
-	                <input type="email" class="form-control" v-model="form.role">
+	                <input type="email" class="form-control" v-model="form.profile">
+	              </div>
+	            </div>
+	            <div class="form-group col-md-12">
+	              <label for="emailAddress">Correo electrónico</label>
+	              <div class="input-group input-group-seamless">
+	                <div class="input-group-prepend">
+	                  <div class="input-group-text">
+	                  	<i class="fas fa-envelope"></i>
+	                  </div>
+	                </div>
+	                <input type="email" class="form-control" v-model="form.email">
 	              </div>
 	            </div>
 	          </div>
 	          </div>
 	          <div class="card-footer border-top">
-	            <a href="#" class="btn btn-sm btn-accent ml-auto d-table mr-3">Agregar usuario</a>
+	            <a @click="addUser" href="#" class="btn btn-sm btn-accent ml-auto d-table mr-3">Agregar usuario</a>
 	          </div>
 	        </div>
 	      </div>
 
-	      <div class="col-sm-12 col-lg-4">
+	      <div class="col-sm-12 col-lg-4 d-none d-lg-block">
 	        <div class="card card-small user-details mb-4">
 	          <div class="card-header p-0">
 	            <div class="user-details__bg">
@@ -86,8 +86,8 @@
 	            <div class="user-details__avatar mx-auto">
 	              <img src="/images/avatars/unknown.jpg" alt="User Avatar">
 	            </div>
-	            <h4 class="text-center m-0 mt-2">{{ form.names }} {{ form.lastnames }}</h4>
-	            <p class="text-center text-light m-0 mb-2 text-uppercase">{{ form.role }}</p>
+	            <h4 class="text-center m-0 mt-2">{{ form.name }} {{ form.lastname }}</h4>
+	            <p class="text-center text-light m-0 mb-2 text-uppercase">{{ form.profile }}</p>
 	            <div class="user-details__user-data border-top border-bottom p-4">
 	              <div class="row mb-3">
 	                <div class="col w-50">
@@ -114,17 +114,42 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
 				form: {
-					names: 'Fulanito',
-					lastnames: 'De Tal',
+					name: 'Fulanito',
+					lastname: 'De Tal',
 					address: 'La Libertad, Trujillo',
 					phone: '000000000',
+					profile: 'Practicante',
 					email: 'fulanito@integralit.com.pe',
-					role: 'Practicante'
 				}
+			}
+		},
+
+		methods: {
+			addUser() {
+				axios.post('http://integralit.test/api/user/sign_up',{
+					name: this.form.name,
+					lastname: this.form.lastname,
+					address: this.form.address,
+					phone: this.form.phone,
+					profile: this.form.profile,
+					email: this.form.email,
+				})
+					.then(response => {
+						this.$toasted.show("¡Usuario creado!", { 
+							 theme: "toasted-primary", 
+							 position: "top-right", 
+							 duration : 2000
+						});
+						this.$router.replace('/escritorio');
+					})
+					.catch(err => {
+						console.log(err);
+					});
 			}
 		}
 	}

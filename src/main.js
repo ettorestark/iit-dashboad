@@ -4,6 +4,9 @@ import router from './router'
 import  store  from './store/store.js'
 import './registerServiceWorker'
 
+import Toasted from 'vue-toasted';
+Vue.use(Toasted)
+
 //LAYOUTS
 import Blank from './layouts/Blank.vue'
 Vue.component('blank-layout', Blank);

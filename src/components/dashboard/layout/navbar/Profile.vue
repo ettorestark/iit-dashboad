@@ -1,7 +1,7 @@
 <template>
  	<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <img class="user-avatar rounded-circle mr-2" src="images/avatars/0.jpg" alt="User Avatar"> <span class="d-none d-md-inline-block">
+          <img class="user-avatar rounded-circle mr-2" :src="this.$store.state.auth.user.photo" alt="User Avatar"> <span class="d-none d-md-inline-block">
             {{ this.$store.state.auth.user.name }}
           </span>
         </a>
