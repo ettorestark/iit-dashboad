@@ -10,10 +10,13 @@
 	            <form>
 	              <div class="form-group mb-4">
 	                <label for="exampleInputEmail1">Dirección de correo electrónico</label>
-	                <input type="email" class="form-control" placeholder="Correo electrónico">
+	                <input type="email" class="form-control" :class="error.email.status" placeholder="Correo electrónico" v-model="form.email">
+	                <div class="invalid-feedback">
+	                	{{ error.email.message }}
+	                </div>
 	                <small id="emailHelp" class="form-text text-muted text-center">Recibirás un correo electrónico con un token único.</small>
 	              </div>
-	              <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Restablecer contraseña</button>
+	              <button class="btn btn-pill btn-accent d-table mx-auto" @click.prevent="restore">Restablecer contraseña</button>
 	            </form>
 	          </div>
 	        </div>
@@ -33,3 +36,52 @@
 		background-size: cover;
 	}
 </style>
+
+<script>
+	import axios from 'axios'
+	export default {
+		data() {
+			return {
+				form: {
+					email: ''
+				},
+				error: {
+					email: {
+						status: '',
+						message: ''
+					}
+				}
+			}
+		},
+
+		methods: {
+			restore() {
+				this.error.email.status = '';
+       			this.error.email.message = '';
+				axios.post('http://integralit.test/api/user/password/restore',{
+						email: this.form.email
+					})
+					.then(response => {
+						this.$router.replace('/');
+						this.$toasted.show('<i class="fas fa-envelope mr-2"></i> Correo enviado', { 
+							 theme: "toasted-primary", 
+							 position: "top-right", 
+							 duration : 2000
+						});
+					})
+					.catch(err => {
+						switch (err.response.status) {
+							case 401:
+			                    this.error.email.status = 'is-invalid';
+			                    this.error.email.message = 'El correo electrónico no se encuentra registrado.';
+								break;
+							case 422: 
+			                    this.error.email.status = 'is-invalid';
+			                    this.error.email.message = err.response.data.errors.email[0];
+								break;
+						}
+					})
+			}
+		}
+	}
+</script>
