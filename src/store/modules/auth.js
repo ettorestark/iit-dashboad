@@ -30,6 +30,15 @@ const mutations = {
 	auth_sign_out(state) {
 		state.token = '';
 		state.status = '';
+	},
+
+	check_success(state, user) {
+		state.status = 'sucess';
+		state.user = '';
+	},
+
+	check_err(state) {
+		state.status = 'error';
 	}
 };
 
@@ -69,6 +78,24 @@ const actions = {
 					resolve(response);
 				})
 				.catch(err => {
+					reject(err);
+				})
+		});
+	},
+
+	verifyUSer({commit}){
+		return new Promise((resolve, reject) => {
+			axios.get('http://integralit.test/api/user/check',{ 
+					headers: {
+						'Authorization': 'Bearer ' + localStorage.getItem('token')
+					}
+				})
+				.then(response => {
+					commit('check_success', response.data);
+					resolve(response);
+				})
+				.catch(err => {
+					commit('check_err');
 					reject(err);
 				})
 		});
