@@ -45,11 +45,6 @@
                 </div>
               </div>
             </div>
-            <div class="user-details__tags p-4">
-              <span class="badge badge-pill badge-light text-light text-uppercase mb-2 border">Administración</span>
-              <span class="badge badge-pill badge-light text-light text-uppercase mb-2 border">Informática</span>
-            
-            </div>
           </div>
         </div>
       </div>

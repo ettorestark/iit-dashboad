@@ -85,15 +85,23 @@
             this.$router.replace('/escritorio');
           })
           .catch(err => {
-            let errors = err.response.data.errors;
-            if(errors.email) {
-                this.error.email.status = 'is-invalid';
-                this.error.email.message = errors.email;
-            }
+            switch (err.response.status) {
+              case 401:
+                    this.error.email.status = 'is-invalid';
+                    this.error.email.message = ['Usuario o contraseña inválido'];
+                break;
+              case 422:
+                let errors = err.response.data.errors;
+                if(errors.email) {
+                    this.error.email.status = 'is-invalid';
+                    this.error.email.message = errors.email;
+                }
 
-            if(errors.password) {
-                this.error.password.status = 'is-invalid';
-                this.error.password.message = errors.password;
+                if(errors.password) {
+                    this.error.password.status = 'is-invalid';
+                    this.error.password.message = errors.password;
+                }
+                break;
             }
           });
 			}
