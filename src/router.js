@@ -144,7 +144,11 @@ router.beforeEach((to, from, next) => {
 			next('/');
 		}
 	}else {
-		next();
+		if(isLoggedIn) {
+			next('/escritorio');
+		}else {
+			next();
+		}
 	}
 	window.scrollTo(0, 0);
 });
