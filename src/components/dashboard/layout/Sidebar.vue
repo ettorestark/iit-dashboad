@@ -71,6 +71,26 @@
             <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <i class="fas fa-hashtag"></i>
+            <span>Categorías</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-small">
+            <a class="dropdown-item " href="user-profile.html">Listar</a>
+            <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <i class="fas fa-tags"></i>
+            <span>Etiquetas</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-small">
+            <a class="dropdown-item " href="user-profile.html">Listar</a>
+            <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
+          </div>
+        </li>
       </ul>
     </div>
   </aside>
