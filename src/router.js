@@ -93,7 +93,7 @@ const routes = [
 	{
 		path: '/',
 		component: () => import('@/views/auth/SignIn.vue'),
-		name: 'signIn',
+		name: 'sign_in',
 		meta: {
 			auth: false,
 			layout: 'blank'
@@ -127,9 +127,15 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 	let isLoggedIn = store.getters.isLoggedIn;
 	let isAuthRequired = to.matched.some(record => record.meta.auth);
-	next();
 	console.log(isLoggedIn);
-	console.log(isAuthRequired);
+	console.log(isAuthRequired);	
+	if(isAuthRequired && !isLoggedIn) {
+		next('/');
+	}else if(!isAuthRequired && isLoggedIn) {
+		next('/escritorio');
+	}else {
+		next();
+	}
 	window.scrollTo(0, 0);
 });
 
