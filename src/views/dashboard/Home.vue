@@ -32,7 +32,7 @@
           <div class="blog-comments__item d-flex p-3">
             <div class="blog-comments__content">
               <div class="blog-comments__meta text-muted">
-                <a class="text-secondary" href="#">Jeff Bezos</a> on <a class="text-secondary" href="#">Hello World!</a> <span class="text-muted">– Hace 4 días</span>
+                <a class="text-secondary" href="#">Jeff Bezos</a> <span class="text-muted">– Hace 4 días</span>
               </div>
               <p class="m-0 my-1 mb-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida malesuada massa...</p>
               <div class="blog-comments__actions">
