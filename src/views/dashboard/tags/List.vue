@@ -7,13 +7,13 @@
 		  </div>
 	  	</div>
 		<div class="row">
-			<div v-for="(item, index) of partners" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+			<div v-for="(item, index) of tags" class="col-lg-3 col-md-6 col-sm-12 mb-4">
 				<div class="card card-small card-post card-post--1">
 					<div class="card-body text-center">
-						<img :src="item.icon"/>
+						<h4 class="font-weight-bold text-uppercase">{{ item.name }}</h4>
 					</div>
 					<div class="card-footer border-top text-primary">
-						<span class="badge badge-secondary mr-2" @click.prevent="deletePartner(item.id, index)">
+						<span class="badge badge-secondary mr-2" @click.prevent="deleteTag(item.id, index)">
 							<i class="fas fa-trash"/>
 						</span>
 						<span class="badge badge-secondary"><i class="fas fa-edit"></i></span>
@@ -29,34 +29,34 @@
 	export default {
 		data() {
 			return {
-				partners: []
+				tags: []
 			}
 		},
 
-		mounted() {
-			this.getPartners();
-		},
-
 		methods: {
-			getPartners() {
-				axios.get('http://integralit.test/api/partner')
+			getTags() {
+				axios.get('http://integralit.test/api/tag')
 					.then(response => {
-						this.partners = response.data;
+						this.tags = response.data;
 					})
 					.catch(err => {
 						console.log(err);
 					});
 			},
 
-			deletePartner(id, index) {
-				axios.delete('http://integralit.test/api/partner/' + id)
+			deleteTag(id, index) {
+				axios.delete('http://integralit.test/api/tag/' + id)
 					.then(response => {
-						this.partners.splice(index, 1);
+						this.tags.splice(index, 1);
 					})
 					.catch(err => {
 						console.log(err);
 					})
 			}
+		},
+
+		mounted() {
+			this.getTags();
 		}
 	}
 </script>

@@ -87,7 +87,7 @@
             <span>Etiquetas</span>
           </a>
           <div class="dropdown-menu dropdown-menu-small">
-            <a class="dropdown-item " href="user-profile.html">Listar</a>
+            <router-link to="/etiquetas" class="dropdown-item">Listar</router-link>
             <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
           </div>
         </li>
