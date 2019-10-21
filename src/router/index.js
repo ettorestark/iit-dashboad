@@ -16,7 +16,7 @@ import posts from './posts';
 Vue.use(VueRouter);
 
 var allRoutes = [];
-allRoutes = allRoutes.concat(auth, miscellanies, home);
+allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, posts);
 
 const routes = allRoutes;
 
