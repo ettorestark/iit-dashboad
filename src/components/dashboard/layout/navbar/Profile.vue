@@ -29,7 +29,7 @@
     signOut() {
       this.$store.dispatch('signOut')
         .then(response => {
-          this.$router.replace('/');
+          this.$router.replace('');
         })
         .catch(err => {
           console.log(err);
