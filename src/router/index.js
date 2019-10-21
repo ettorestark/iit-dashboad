@@ -11,12 +11,13 @@ import activityCenter from './activityCenter'
 import messageCenter from './messageCenter'
 import users from './users';
 import posts from './posts';
+import partners from './partners';
 
 
 Vue.use(VueRouter);
 
 var allRoutes = [];
-allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, posts);
+allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, posts, partners);
 
 const routes = allRoutes;
 
