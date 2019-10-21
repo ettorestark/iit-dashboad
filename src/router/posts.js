@@ -1,5 +1,5 @@
 const routes = [
-{
+	{
 		path: '/publicaciones',
 		component: () => import('@/views/dashboard/post/List.vue'),
 		meta: {
