@@ -1,15 +1,28 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import store from './store/store'
+import VueRouter from 'vue-router'
+import store from '../store/store.js'
 
-Vue.use(Router);
+//IMPORT ROUTES
+import auth from './auth'
+import miscellanies from './miscellanies'
+import home from './home'
+import profile from './profile'
+import activityCenter from './activityCenter'
+import messageCenter from './messageCenter'
+import users from './users';
+import posts from './posts';
 
-const routes = [
-];
 
-const router = new Router({
-	mode: 'history',
-	routes
+Vue.use(VueRouter);
+
+var allRoutes = [];
+allRoutes = allRoutes.concat(auth, miscellanies, home);
+
+const routes = allRoutes;
+
+const router = new VueRouter({
+	routes,
+	mode: 'history'
 });
 
 router.beforeEach((to, from, next) => {
