@@ -15,7 +15,15 @@ const routes = [
 			auth: false,
 			layout: 'blank'
 		}
-	}
+	},
+	{
+		path: '/restablecer/:id',
+		component: () => import('@/views/auth/RestorePassword.vue'),
+		meta: {
+			auth: false,
+			layout: 'blank'
+		}
+	} 
 ];
 
 export default routes;
