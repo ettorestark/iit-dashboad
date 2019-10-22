@@ -73,7 +73,7 @@ const actions = {
 					}
 				})
 				.then(response => {
-					commit('auth_signout');
+					commit('auth_sign_out');
 					localStorage.removeItem('token');
 					resolve(response);
 				})
