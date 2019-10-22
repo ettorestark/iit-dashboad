@@ -10,13 +10,13 @@
               <form>
                 <div class="form-group mb-4">
                   <label for="exampleInputEmail1">Contraseña</label>
-                  <input type="email" class="form-control"  placeholder="Correo electrónico">
+                  <input type="password" class="form-control"  placeholder="Correo electrónico">
                   <div class="invalid-feedback">
                   </div>
                 </div>
                 <div class="form-group mb-4">
                   <label for="exampleInputEmail1">Repetir contraseña</label>
-                  <input type="email" class="form-control"  placeholder="Correo electrónico">
+                  <input type="password" class="form-control"  placeholder="Correo electrónico">
                   <div class="invalid-feedback">
                   </div>
                 </div>
@@ -37,7 +37,36 @@
     background-size: cover;
   }
 </style>
-
-<script>
   
+<script>
+  import axios from 'axios'
+  export default {
+    data() {
+      return {
+        hash: null
+      }
+    },
+
+    mounted() {
+      this.hash = this.$route.params.hash;
+      this.verifyHash();
+    },
+
+    methods: {
+      verifyHash() {
+        axios.post('http://integralit.test/api/user/checkHash',{
+          id: this.hash.split('-')[1],
+          hash: this.hash.split('-')[0]
+        })
+          .then(response => {
+            
+          })
+          .catch(err => {
+            if(err.response.status == 401) {
+              this.$router.replace('/');
+            }
+          })
+      }
+    }
+  }
 </script>
