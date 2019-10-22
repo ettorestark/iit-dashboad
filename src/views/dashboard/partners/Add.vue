@@ -10,14 +10,14 @@
 			<div class="col-12">
 			  <div class="card">
 				<div class="card-header">
-					<div class="dropzone">
-						<i class="fas fa-upload text-primary"></i>
-					</div>
+					<input type="file" id="upload" class="d-none"/>
+					<label id="dropzone" class="dropzone" for="upload" draggable="true">
+						<i class="fas fa-cloud-upload-alt"></i>
+					</label>
 				</div>
 				<div class="card-body">
 					<div class="form-group">
-						<label for="nombre">Nombre del partner: </label>
-						<input type="text" placeholder="Nombre" class="form-control">
+						<input type="text" placeholder="Partner" class="form-control">
 					</div>
 				</div>
 				<div class="card-footer border-top">
@@ -30,19 +30,26 @@
 </template>
 
 <style>
-	.dropzone	{
-		height: 30vh;
+	#dropzone{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 5px;
+		height: 35vh;
+		border: 2px dashed #CCC;
 	}
 
-	.dropzone i {
-		font-size: 2em;
-	}
-
-	.dropzone:hover {
-		background: #F8F8F8;
+	#dropzone i {
+		font-size: 3em;
 	}
 </style>
+
+<script>
+	export default {
+		mounted() {
+			let dropzone = document.getElementById('dropzone');
+			dropzone.addEventListener('dragover', () => {
+				dropzone.style.border = '2px dashed #e8412a';
+			});
+		}
+	}
+</script>

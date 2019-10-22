@@ -58,7 +58,7 @@
 			restore() {
 				this.error.email.status = '';
        			this.error.email.message = '';
-				axios.post('http://integralit.test/api/user/password/restore',{
+				axios.post('http://integralit.test/api/user/password/request',{
 						email: this.form.email
 					})
 					.then(response => {

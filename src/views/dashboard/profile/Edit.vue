@@ -10,12 +10,7 @@
 			<div class="col-lg-12 mx-auto mt-4">
 				<div class="card card-small edit-user-details mb-4">
           <div class="card-body p-0">
-            <form action="#" class="py-4">
-              <div class="form-row mx-4">
-                <div class="col mb-3">
-
-                </div>
-              </div>
+            <div action="#" class="py-4">
               <div class="form-row mx-4">
               	<div class="col-lg-4">
                   <label for="userProfilePicture" class="text-center w-100 mb-4">Foto de perfil</label>
@@ -79,6 +74,11 @@
                 <div class="form-group col-md-12">
                   <label for="userBio">Descripción</label>
                   <textarea style="min-height: 87px;" id="userBio" name="userBio" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="form-row mx-4">
+                <div class="form-group col-md-12">
+                  <button class="btn btn-primary">Cambiar información</button>
                 </div>
               </div>
               <hr>
@@ -156,34 +156,25 @@
                     <input type="email" class="form-control" id="socialGoogle">
                   </div>
                 </div>
+                <div class="form-group">
+                  <button class="btn btn-primary">Actualizar</button>
+                </div>
               </div>
               <hr>
-              <div class="form-row mx-4">
-                <div class="col mb-3">
-                  <p class="form-text text-muted m-0">Cambia tu contraseña</p>
-                </div>
-              </div>
-              <div class="form-row mx-4">
-                <div class="form-group col-md-4">
-                  <label for="firstName">Antigua contraseña</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="Contraseña">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="lastName">Nueva contraseña</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="Nueva contraseña">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="emailAddress">Repite la nueva contraseña</label>
-                  <input type="email" class="form-control" id="emailAddress" placeholder="Repite la contraseña">
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="card-footer border-top">
-            <a href="#" class="btn btn-sm btn-accent ml-auto d-table mr-3">Guardar cambios</a>
+              <change-password/>
+            </div>
           </div>
         </div>
 			</div>
 		</div>
 	</div>
 </template>
+
+<script>
+  import ChangePassword from '@/components/dashboard/profile/ChangePassword.vue'
+  export default {
+    components: {
+      'change-password': ChangePassword
+    }
+  }
+</script>
