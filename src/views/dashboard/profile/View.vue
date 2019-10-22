@@ -21,12 +21,7 @@
             </div>
             <h4 class="text-center m-0 mt-2">{{ this.$store.state.auth.user.name }} {{ this.$store.state.auth.user.lastname }}</h4>
             <p class="text-center text-light m-0 mb-2">{{ this.$store.state.auth.user.profile }}</p>
-            <ul class="user-details__social user-details__social--primary d-table mx-auto mb-4">
-              <li class="mx-1"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li class="mx-1"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-              <li class="mx-1"><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li class="mx-1"><a href="#"><i class="fab fa-github"></i></a></li>
-            </ul>
+            <social-networks/>
             <div class="user-details__user-data border-top border-bottom p-4">
               <div class="row mb-3">
                 <div class="col w-50">
@@ -104,3 +99,12 @@
     </div>
 	</div>
 </template>
+
+<script>
+  import SocialNetworks from '@/components/dashboard/profile/view/SocialNetworks.vue'
+  export default {
+    components: {
+      SocialNetworks
+    }
+  }
+</script>
