@@ -82,84 +82,7 @@
                 </div>
               </div>
               <hr>
-              <div class="form-row mx-4">
-                <div class="col mb-3">
-                  <p class="form-text text-muted m-0">Configura la información de tus perfiles personales.</p>
-                </div>
-              </div>
-              <div class="form-row mx-4">
-                <div class="form-group col-md-4">
-                  <label for="socialFacebook">Facebook</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-facebook-f"></i>
-                      </div>
-                    </div>
-                    <input type="text" class="form-control" id="socialFacebook">
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="socialTwitter">Twitter</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-twitter"></i>
-                      </div>
-                    </div>
-                    <input type="email" class="form-control" id="socialTwitter">
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="socialGitHub">GitHub</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-github"></i>
-                      </div>
-                    </div>
-                    <input type="text" class="form-control" id="socialGitHub">
-                  </div>
-                </div>
-              </div>
-              <div class="form-row mx-4">
-                <div class="form-group col-md-4">
-                  <label for="socialSlack">Slack</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-slack"></i>
-                      </div>
-                    </div>
-                    <input type="email" class="form-control" id="socialSlack">
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="socialDribbble">Linkedin</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-linkedin-in"></i>
-                      </div>
-                    </div>
-                    <input type="email" class="form-control" id="socialDribbble">
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="socialGoogle">YouTube</label>
-                  <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fab fa-youtube"></i>
-                      </div>
-                    </div>
-                    <input type="email" class="form-control" id="socialGoogle">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary">Actualizar</button>
-                </div>
-              </div>
+              <social-networks/>
               <hr>
               <change-password/>
             </div>
@@ -172,9 +95,11 @@
 
 <script>
   import ChangePassword from '@/components/dashboard/profile/ChangePassword.vue'
+  import SocialNetworks from '@/components/dashboard/profile/SocialNetworks.vue'
   export default {
     components: {
-      'change-password': ChangePassword
+      ChangePassword,
+      SocialNetworks
     }
   }
 </script>
