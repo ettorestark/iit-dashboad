@@ -2,7 +2,7 @@
 	<div>
 		<div class="page-header row no-gutters py-4">
 			<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-				<span class="text-uppercase page-subtitle">{{ this.$route.params.user }}</span>
+				<span class="text-uppercase page-subtitle">{{ this.$route.params.username }}</span>
 				<h3 class="page-title">Vision general</h3>
 			</div>
 		</div>
@@ -10,12 +10,12 @@
         <div class="card card-small user-details mb-4">
           <div class="card-header p-0">
             <div class="user-details__bg">
-              <img src="images/user-profile/up-user-details-background.jpg" alt="User Details Background Image">
+              <img src="/images/user-profile/up-user-details-background.jpg" alt="User Details Background Image">
             </div>
           </div>
           <div class="card-body p-0">
             <div class="user-details__avatar mx-auto">
-              <img :src="user.photo" alt="User Avatar">
+              <img :src="'/'+user.photo" alt="User Avatar">
             </div>
             <h4 class="text-center m-0 mt-2">{{ user.name }} {{ user.lastname }}</h4>
             <p class="text-center text-light m-0 mb-2">{{ user.profile }}</p>
@@ -78,7 +78,7 @@
 			},
 
 			getSocialNetworks() {
-				axios.get('http://integralit.test/api/social_networks/'+ user.id)
+				axios.get('http://integralit.test/api/social_networks/'+ this.user.id)
 					.then(response => {
 						this.socialNetworks = response.data;
 					})
