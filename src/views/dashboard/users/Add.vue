@@ -6,8 +6,8 @@
 				<h3 class="page-title">Registro de usuario</h3>
 			</div>
 		</div>
-	    <div class="row mt-4">
-		      <div class="col-lg-8">
+	    <div class="row">
+		      <div class="col-lg-12">
 	        <div class="card card-small user-activity mb-4">
 	          <div class="card-header border-bottom">
 	            <h6 class="m-0">Datos generales</h6>
@@ -17,21 +17,30 @@
 			   <div class="form-row">
 	            <div class="form-group col-md-6">
 	              <label for="firstName">Nombres</label>
-	              <input type="text" class="form-control" v-model="form.name">
+	              <input type="text" class="form-control" :class="error.name.status" placeholder="Nombres" v-model="form.name">
+								<div class="invalid-feedback">
+									{{ this.error.name.message[0] }}
+								</div>
 	            </div>
 	            <div class="form-group col-md-6">
 	              <label for="lastName">Apellidos</label>
-	              <input type="text" class="form-control" v-model="form.lastname">
+	              <input type="text" class="form-control" :class="error.lastname.status" placeholder="Apellidos" v-model="form.lastname">
+	              <div class="invalid-feedback">
+	              	{{ this.error.lastname.message[0] }}
+	              </div>
 	            </div>
 	            <div class="form-group col-md-6">
-	              <label for="userLocation">Ubicaciòn</label>
+	              <label for="userLocation">Ubicación</label>
 	              <div class="input-group input-group-seamless">
 	                <div class="input-group-prepend">
 	                  <div class="input-group-text">
 	                    <i class="fas fa-map-marker"></i>
 	                  </div>
 	                </div>
-	                <input type="text" class="form-control" v-model="form.address">
+	                <input type="text" class="form-control" :class="error.address.status" placeholder="Ubicación" v-model="form.address">
+	              </div>
+	              <div class="invalid-feedback d-block">
+	              	{{ this.error.address.message[0] }}
 	              </div>
 	            </div>
 	            <div class="form-group col-md-6">
@@ -42,7 +51,10 @@
 	                    <i class="fas fa-phone"></i>
 	                  </div>
 	                </div>
-	                <input type="text" class="form-control" id="phoneNumber" v-model="form.phone">
+	                <input type="text" class="form-control":class="error.phone.status" placeholder="Celular" v-model="form.phone">
+	              </div>
+	              <div class="invalid-feedback d-block">
+	              	{{ this.error.phone.message[0] }}
 	              </div>
 	            </div>
 	            <div class="form-group col-md-12">
@@ -53,7 +65,10 @@
 	                  	<i class="fas fa-briefcase"></i>
 	                  </div>
 	                </div>
-	                <input type="email" class="form-control" v-model="form.profile">
+	                <input type="email" class="form-control" :class="error.profile.status" placeholder="Cargo" v-model="form.profile">
+	              </div>
+	              <div class="invalid-feedback d-block">
+	              	{{ this.error.profile.message[0] }}
 	              </div>
 	            </div>
 	            <div class="form-group col-md-12">
@@ -64,7 +79,24 @@
 	                  	<i class="fas fa-envelope"></i>
 	                  </div>
 	                </div>
-	                <input type="email" class="form-control" v-model="form.email">
+	                <input type="email" class="form-control" :class="error.email.status" placeholder="Correo electrónico" v-model="form.email">
+	              </div>
+	              <div class="invalid-feedback d-block">
+	              	{{ this.error.email.message[0] }}
+	              </div>
+	            </div>
+	            <div class="form-group col-md-12">
+	              <label for="emailAddress">Nombre de usuario</label>
+	              <div class="input-group input-group-seamless">
+	                <div class="input-group-prepend">
+	                  <div class="input-group-text">
+	                  	<i class="fas fa-user"></i>
+	                  </div>
+	                </div>
+	                <input type="email" class="form-control" :class="error.username.status" placeholder="Nombre de usuario" v-model="form.username">
+	              </div>
+	              <div class="invalid-feedback d-block">
+	              	{{ this.error.username.message[0] }}
 	              </div>
 	            </div>
 	          </div>
@@ -75,40 +107,6 @@
 	        </div>
 	      </div>
 
-	      <div class="col-sm-12 col-lg-4 d-none d-lg-block">
-	        <div class="card card-small user-details mb-4">
-	          <div class="card-header p-0">
-	            <div class="user-details__bg">
-	              <img src="/images/user-profile/up-user-details-background.jpg" alt="User Details Background Image">
-	            </div>
-	          </div>
-	          <div class="card-body p-0">
-	            <div class="user-details__avatar mx-auto">
-	              <img src="/images/avatars/unknown.jpg" alt="User Avatar">
-	            </div>
-	            <h4 class="text-center m-0 mt-2">{{ form.name }} {{ form.lastname }}</h4>
-	            <p class="text-center text-light m-0 mb-2 text-uppercase">{{ form.profile }}</p>
-	            <div class="user-details__user-data border-top border-bottom p-4">
-	              <div class="row mb-3">
-	                <div class="col w-50">
-	                  <span>Correo electrónico</span>
-	                  <span>{{ form.email }}</span>
-	                </div>
-	                <div class="col w-50">
-	                  <span>Ubicación</span>
-	                  <span>{{ form.address }}</span>
-	                </div>
-	              </div>
-	              <div class="row">
-	                <div class="col w-50">
-	                  <span>Celular</span>
-	                  <span>{{ form.phone }}</span>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
 	    </div>
 	</div>
 </template>
@@ -119,18 +117,71 @@
 		data() {
 			return {
 				form: {
-					name: 'Fulanito',
-					lastname: 'De Tal',
-					address: 'La Libertad, Trujillo',
-					phone: '000000000',
-					profile: 'Practicante',
-					email: 'fulanito@integralit.com.pe',
+					name: '',
+					lastname: '',
+					address: '',
+					phone: '',
+					profile: '',
+					email: '',
+					username: ''
+				},
+
+				error: {
+					name: {
+						status: '',
+						message: ''
+					},
+					lastname: {
+						status: '',
+						message: ''
+					},
+					address: {
+						status: '',
+						message: ''
+					},
+					phone: {
+						status: '',
+						message: ''
+					},
+					profile: {
+						status: '',
+						message: ''
+					},
+					email: {
+						status: '',
+						message: ''
+					},
+					username: {
+						status: '',
+						message: ''
+					}
 				}
 			}
 		},
 
 		methods: {
 			addUser() {
+				this.error.name.status = '';
+        this.error.name.message = '';
+
+				this.error.lastname.status = '';
+        this.error.lastname.message = '';
+
+				this.error.address.status = '';
+        this.error.address.message = '';
+
+				this.error.phone.status = '';
+        this.error.phone.message = '';
+
+				this.error.profile.status = '';
+        this.error.profile.message = '';
+
+				this.error.email.status = '';
+        this.error.email.message = '';
+
+				this.error.username.status = '';
+        this.error.username.message = '';
+
 				axios.post('http://integralit.test/api/user/sign_up',{
 					name: this.form.name,
 					lastname: this.form.lastname,
@@ -138,6 +189,7 @@
 					phone: this.form.phone,
 					profile: this.form.profile,
 					email: this.form.email,
+					username: this.form.username,
 				})
 					.then(response => {
 						this.$toasted.show("¡Usuario creado!", { 
@@ -148,7 +200,45 @@
 						this.$router.replace('/escritorio');
 					})
 					.catch(err => {
-						console.log(err);
+						let errors = err.response.data.errors;
+						switch (err.response.status) {
+							case 422:
+									if(errors.name) {
+										this.error.name.status = 'is-invalid';
+						        this.error.name.message = errors.name;
+									}
+
+									if(errors.lastname) {
+										this.error.lastname.status = 'is-invalid';
+						        this.error.lastname.message = errors.lastname;
+									}
+
+									if(errors.address) {
+										this.error.address.status = 'is-invalid';
+						        this.error.address.message = errors.address;
+									}
+
+									if(errors.phone) {
+										this.error.phone.status = 'is-invalid';
+						        this.error.phone.message = errors.phone;
+									}
+
+									if(errors.profile) {
+										this.error.profile.status = 'is-invalid';
+						        this.error.profile.message = errors.profile;
+									}
+
+									if(errors.email) {
+										this.error.email.status = 'is-invalid';
+						        this.error.email.message = errors.email;
+									}
+
+									if(errors.username) {
+										this.error.username.status = 'is-invalid';
+						        this.error.username.message = errors.username;
+									}
+								break;
+						}
 					});
 			}
 		}
