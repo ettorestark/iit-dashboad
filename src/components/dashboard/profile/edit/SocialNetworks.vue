@@ -163,7 +163,7 @@
 			},
 
 			success() {
-				this.$toasted.show("<i class='fas fa-lock'></i>¡Perfiles sociales actualizados!", { 
+				this.$toasted.show("¡Perfiles sociales actualizados!", { 
 					 theme: "toasted-primary", 
 					 position: "top-right", 
 					 duration : 2000
