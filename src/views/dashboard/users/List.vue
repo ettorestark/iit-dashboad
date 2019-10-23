@@ -8,15 +8,17 @@
 		</div>
     <div class="row">
       <div class="col-lg-4" v-for="user in users">
-        <div class="card card-small mb-4 pt-3">
-          <div class="card-header border-bottom text-center">
-            <div class="mb-3 mx-auto">
-              <img class="rounded-circle" :src="user.photo" alt="User Avatar" width="110">
+        <router-link :to="user.username">
+          <div class="card card-small mb-4 pt-3">
+            <div class="card-header border-bottom text-center">
+              <div class="mb-3 mx-auto">
+                <img class="rounded-circle" :src="user.photo" alt="User Avatar" width="110">
+              </div>
+              <h4 class="mb-0">{{ user.name }}  {{ user.lastname }}</h4>
+              <span class="text-muted d-block mb-2">{{ user.profile }}</span>
             </div>
-            <h4 class="mb-0">{{ user.name }}  {{ user.lastname }}</h4>
-            <span class="text-muted d-block mb-2">{{ user.profile }}</span>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
 	</div>
