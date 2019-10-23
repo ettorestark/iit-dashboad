@@ -7,8 +7,8 @@
 			</div>
 		</div>
     <div class="row">
-      <div class="col-lg-4" v-for="user in users">
-        <router-link :to="user.username">
+      <div class="col-lg-4" v-for="user in users" v-if="user.id !== $store.state.auth.user.id">
+        <router-link :to="user.username" class="no-hover shadow">
           <div class="card card-small mb-4 pt-3">
             <div class="card-header border-bottom text-center">
               <div class="mb-3 mx-auto">

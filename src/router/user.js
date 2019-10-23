@@ -1,6 +1,6 @@
 const routes = [
 	{
-		path: '/:user',
+		path: '/:username',
 		component: () => import('@/views/dashboard/user/Home.vue'),
 		meta: {
 			auth: true

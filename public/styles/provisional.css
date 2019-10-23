@@ -1,0 +1,7 @@
+.no-hover:hover{
+	text-decoration: none;
+}
+
+.shadow:hover .card {
+	box-shadow: 0px 0px 49px -10px rgba(0,0,0,0.2);
+}
