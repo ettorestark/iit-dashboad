@@ -99,7 +99,7 @@
 <script>
   export default {
     mounted() {
-      document.querySelectorAll('#sidebar a:not   ([href="#"])').forEach(e => {
+      document.querySelectorAll('#sidebar a:not([href="#"])').forEach(e => {
         e.addEventListener('click', () => {
           document.getElementById('sidebar').classList.remove('open');
         })
