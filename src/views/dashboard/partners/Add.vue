@@ -13,7 +13,10 @@
           <form type="POST" enctype="multipart/form-data">
           <div class="card-body">
               <div class="form-group">
-              	<input type="text" class="form-control" placeholder="Nombre" v-model="form.name">
+              	<input type="text" class="form-control" :class="error.name.status"  placeholder="Nombre" v-model="form.name">
+                <div class="invalid-feedback">
+                  {{ error.name.message[0] }}
+                </div>
               </div>
               <div class="form-group">
               	<input type="text" class="form-control" placeholder="URL" v-model="form.url">
@@ -22,11 +25,13 @@
               	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
               </div>
               <div class="form-group">
-              	<label for="file" class="btn btn-primary btn-block mb-0">
+              	<label id="dropzone" for="file" class="btn btn-primary btn-block mb-0">
               		<i class="fas fa-file-image"></i> Subir un ícono
               	</label>
-              	<input type="file" id="file" class="d-none" @change.prevent="uploadIcon" accept="image/">
-              	<sub class="text-light">El ícono debe tener contar con dimensiones de 64px por 64px</sub>
+              	<input type="file" id="file" class="d-none is-invalid" @change.prevent="uploadIcon" accept="image/">
+                <sub class="d-block mt-2 text-error">
+                  {{ error.icon.message[0] }}
+                </sub>
               </div>
           </div>
           <div class="card-header border-top">
@@ -46,12 +51,26 @@
           </div>
           <div class='card-body p-2 d-flex justify-content-center'>
             <i class="fas fa-images display-3 mt-4 mb-4 text-light" v-if="!form.icon"></i>
-						<img :src="icon" class=""/>
+						<img :src="icon.src" class=""/>
           </div>
           <div class="card-footer">
-          	<button class="btn btn-secondary" @click.prevent="deleteIcon">
+          	<button class="btn btn-secondary" v-if="form.icon" @click.prevent="deleteIcon">
              <i class="fas fa-trash"></i> 
             </button>
+          </div>
+          <div class="card-footer border-top" v-if="form.icon">
+            <div class="d-block text-uppercase">
+              <span class="font-weight-bold">tipo</span>
+              {{ form.icon.type }}
+            </div>
+            <div class="d-block text-uppercase">
+              <span class="font-weight-bold">tamaño</span>
+              {{ ((form.icon.size)/1024).toFixed(2) }} kilobytes
+            </div>
+            <div class="d-block text-uppercase">
+              <span class="font-weight-bold">dimensiones</span>
+              {{ icon.width }}x{{ icon.height }} pixeles
+            </div>
           </div>
         </div>
       </div>
@@ -62,6 +81,9 @@
 <style>
   #iconPreview i {
     font-size: 3em;
+  }
+  .text-error {
+    color: #c4183c;
   }
 </style>
 
@@ -76,18 +98,39 @@
 					description: '',
 					icon: ''
 				},
-        icon: ''
+        icon: {
+          src: '',
+          width: '',
+          height: ''
+        },
+        error: {
+          name: {
+            status: '',
+            message: ''
+          },
+          icon: {
+            status: '',
+            message: ''
+          }
+        }
 			}
 		},
 
 		methods: {
 			addPartner() {
+        this.error.name.status = '';
+        this.error.name.message = '';
+
+        this.error.icon.status = '';
+        this.error.icon.message = '';
+
         let formData = new FormData();
         formData.append('user_id', this.$store.state.auth.user.id);
         formData.append('name', this.form.name);
         formData.append('url', this.form.url);
         formData.append('description', this.form.description);
         formData.append('icon', this.form.icon);
+
 				axios.post('http://integralit.test/api/partner', formData,{
             headers: {
               'Content-Type': 'multipart/form-data'
@@ -100,27 +143,54 @@
                duration : 2000
             });
             window.scrollTo(0, 0);
+            this.cleanInputs();
           })
           .catch(err => {
-            console.log(err);
+            let errors = err.response.data.errors;
+            switch (err.response.status) {
+              case 422:
+                if(errors.name) {
+                  this.error.name.status = 'is-invalid';
+                  this.error.name.message = errors.name;
+                }
+                if(errors.icon) {
+                  this.error.icon.status = 'is-invalid';
+                  this.error.icon.message = errors.icon;
+                }
+                break;
+            }
           });
 			},
 
 			uploadIcon(e) {
         this.form.icon = e.target.files[0];
+        console.log(this.form.icon);
 
 				let reader = new FileReader();
         reader.readAsDataURL(this.form.icon);
 
 				reader.onload = e => {
-          this.icon = e.target.result;
+          this.icon.src = e.target.result;     
+          let image = new Image();
+          image.src = this.icon.src;
+          this.icon.width = image.width;
+          this.icon.height = image.height;
         };
 
 			},
 
 			deleteIcon() {
-				this.icon = '';
-			}
+				this.form.icon = '';
+        this.icon.src = '';
+			},
+
+      cleanInputs() {
+        this.form.name = '';
+        this.form.url = '';
+        this.form.description = '';
+        this.form.icon = '';
+        this.icon = '';
+      }
 		}
 	}
 </script>
