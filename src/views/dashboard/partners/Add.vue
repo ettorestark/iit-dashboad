@@ -46,7 +46,7 @@
           </div>
           <div class='card-body p-2 d-flex justify-content-center'>
             <i class="fas fa-images display-3 mt-4 mb-4 text-light" v-if="!form.icon"></i>
-						<img :src="form.icon" class=""/>
+						<img :src="icon" class=""/>
           </div>
           <div class="card-footer">
           	<button class="btn btn-secondary" @click.prevent="deleteIcon">
@@ -94,7 +94,12 @@
             }
           })
           .then(response => {
-            console.log(response);
+            this.$toasted.show("<i class='fas fa-handshake'></i> ¡Partner agregado!", { 
+               theme: "toasted-primary", 
+               position: "top-right", 
+               duration : 2000
+            });
+            window.scrollTo(0, 0);
           })
           .catch(err => {
             console.log(err);
@@ -102,23 +107,19 @@
 			},
 
 			uploadIcon(e) {
-        let files = e.target.files || e.dataTransfer.files;
-        let icon = files[0];
-        this.form.icon = icon;
+        this.form.icon = e.target.files[0];
 
 				let reader = new FileReader();
-				reader.onprogress = () => {
-					console.log('Cargando');
-				};
+        reader.readAsDataURL(this.form.icon);
+
 				reader.onload = e => {
           this.icon = e.target.result;
         };
 
-        reader.readAsDataURL(icon);
 			},
 
 			deleteIcon() {
-				this.form.icon = '';
+				this.icon = '';
 			}
 		}
 	}
