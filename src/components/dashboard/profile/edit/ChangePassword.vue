@@ -8,21 +8,21 @@
       <div class="form-row mx-4">
         <div class="form-group col-md-4">
           <label for="firstName">Antigua contraseña</label>
-          <input type="password" class="form-control" :class="error.old_password.status" id="firstName" placeholder="Contraseña" v-model="form.old_password">
+          <input type="password" class="form-control" :class="error.old_password.status" placeholder="Contraseña" v-model="form.old_password">
           <div class="invalid-feedback">
           	{{ error.old_password.message[0] }}
           </div>
         </div>
         <div class="form-group col-md-4">
           <label for="lastName">Nueva contraseña</label>
-          <input type="password" class="form-control" :class="error.password.status" id="lastName" placeholder="Nueva contraseña" v-model="form.password">
+          <input type="password" class="form-control" :class="error.password.status" placeholder="Nueva contraseña" v-model="form.password">
           <div class="invalid-feedback">
           	{{ error.password.message[0] }}
           </div>
         </div>
         <div class="form-group col-md-4">
           <label for="emailAddress">Repite la nueva contraseña</label>
-          <input type="password" class="form-control" id="emailAddress" placeholder="Repite la contraseña" v-model="form.password_confirmation">
+          <input type="password" class="form-control" placeholder="Repite la contraseña" v-model="form.password_confirmation">
         </div>
       </div>
       <div class="form-row mx-4">
