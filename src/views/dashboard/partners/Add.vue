@@ -25,7 +25,7 @@
               	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
               </div>
               <div class="form-group">
-              	<label id="dropzone" for="file">
+              	<label id="dropzone" for="file" draggable="true">
               		<i class="fas fa-cloud-upload-alt mr-2"></i>
                   <span class="d-block">Presiona o arrastra y suelta archivos</span>
               	</label>
@@ -50,7 +50,7 @@
           </div>
           <div class='card-body p-2 d-flex justify-content-center'>
             <i class="fas fa-images display-3 mt-4 mb-4 text-light" v-if="!form.icon"></i>
-						<img :src="icon.src" class=""/>
+						<img id="preview" :src="icon.src"/>
           </div>
           <div class="card-footer">
           	<button class="btn btn-secondary" v-if="form.icon" @click.prevent="deleteIcon">
@@ -74,6 +74,10 @@
 </template>
 
 <style>
+  #preview {
+    max-width: 100%;
+    max-height: 100%;
+  }
   #dropzone {
     width: 100%;
     height: 20vh;
@@ -84,9 +88,19 @@
     border: 2px dashed #CCC;
   }
 
+  .drag-enter {
+    border: 2px dashed #28A745;
+  }
+
+  .drag-leave {
+    border: 2px dashed #DC3545;
+  }
+
   #dropzone i {
     font-size: 2em;
   }
+
+
 
   .text-error {
     color: #c4183c;
@@ -121,6 +135,34 @@
         }
 			}
 		},
+
+    mounted() {
+      let dropzone = document.getElementById('dropzone');
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+
+      dropzone.addEventListener('dragenter', () => {
+        dropzone.style.border = '2px dashed #28A745';
+        dropzone.style.color = '#28A745';
+      });
+
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.style.border = '2px dashed #DC3545';
+        dropzone.style.color = '#DC3545';
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        this.form.icon = e.dataTransfer.files[0];
+        this.convertToBase64();
+        e.preventDefault();
+      });
+
+      dropzone.addEventListener('dragend', (e) => {
+        console.log('Terminó');
+        e.preventDefault();
+      });
+    },
 
 		methods: {
 			addPartner() {
@@ -170,20 +212,21 @@
 
 			uploadIcon(e) {
         this.form.icon = e.target.files[0];
-        console.log(this.form.icon);
+        convertToBase64();
+			},
 
-				let reader = new FileReader();
+      convertToBase64() {
+        let reader = new FileReader();
         reader.readAsDataURL(this.form.icon);
 
-				reader.onload = e => {
+        reader.onload = e => {
           this.icon.src = e.target.result;     
           let image = new Image();
           image.src = this.icon.src;
           this.icon.width = image.width;
           this.icon.height = image.height;
         };
-
-			},
+      },
 
 			deleteIcon() {
 				this.form.icon = '';

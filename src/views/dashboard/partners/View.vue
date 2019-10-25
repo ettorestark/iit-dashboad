@@ -24,10 +24,11 @@
               	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
               </div>
               <div class="form-group">
-              	<label id="dropzone" for="file" class="btn btn-primary btn-block mb-0">
-              		<i class="fas fa-file-image"></i> Subir un ícono
-              	</label>
-              	<input type="file" id="file" class="d-none is-invalid" accept="image/" @change="uploadIcon">
+                <label id="dropzone" for="file">
+                  <i class="fas fa-cloud-upload-alt mr-2"></i>
+                  <span class="d-block">Presiona o arrastra y suelta archivos</span>
+                </label>
+                <input type="file" id="file" class="d-none is-invalid" @change="uploadIcon" accept="image/">
                 <sub class="d-block mt-2 text-error">
                   {{ error.icon.message[0] }}
                 </sub>
@@ -76,6 +77,26 @@
     </div>
 	</div>
 </template>
+
+<style>
+  #dropzone {
+    width: 100%;
+    height: 20vh;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #CCC;
+  }
+
+  #dropzone i {
+    font-size: 2em;
+  }
+
+  .text-error {
+    color: #c4183c;
+  }
+</style>
 
 <script>
 	import axios from 'axios'

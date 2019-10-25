@@ -9,6 +9,9 @@
         <input type="file" id="userProfilePicture" class="d-none" @change="uploadProfilePicture">
       </label>
     </div>
+    <div class="d-flex justify-content-center">
+      <label for="userProfilePicture" class="btn btn-outline-primary mt-3 mb-4 d-none d-sm-block">Cambiar foto</label>
+    </div>
   </div>
 </template>
 
