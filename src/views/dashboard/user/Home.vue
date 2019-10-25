@@ -15,7 +15,7 @@
           </div>
           <div class="card-body p-0">
             <div class="user-details__avatar mx-auto">
-              <img :src="'/'+user.photo" alt="User Avatar">
+              <img :src="user.photo" alt="User Avatar">
             </div>
             <h4 class="text-center m-0 mt-2">{{ user.name }} {{ user.lastname }}</h4>
             <p class="text-center text-light m-0 mb-2">{{ user.profile }}</p>
