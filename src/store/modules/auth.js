@@ -95,6 +95,7 @@ const actions = {
 					resolve(response);
 				})
 				.catch(err => {
+					localStorage.removeItem('token');
 					commit('check_err');
 					reject(err);
 				})

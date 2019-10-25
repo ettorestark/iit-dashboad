@@ -41,10 +41,8 @@
           </div>
           </form>
         </div>
-        <!-- / Add New Post Form -->
       </div>
       <div class="col-lg-3 col-md-12">
-        <!-- Post Overview -->
         <div class='card card-small mb-3'>
           <div class="card-header border-bottom">
             <h6 class="m-0">Vista previa</h6>
