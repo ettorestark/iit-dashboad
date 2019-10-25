@@ -2,18 +2,17 @@
 	<div>
 		<div class="page-header row no-gutters py-4">
 			<div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-			  <span class="text-uppercase page-subtitle">Partners</span>
-			  <h3 class="page-title">Agregar</h3>
+			  <span class="text-uppercase page-subtitle">Edición</span>
+			  <h3 class="page-title text-uppercase">{{ this.$route.params.name }}</h3>
 		  </div>
-	    </div>
-    <div class="row">
+	  </div>
+ 		<div class="row">
       <div class="col-lg-9 col-md-12">
-        <!-- Add New Post Form -->
         <div class="card card-small mb-3">
           <form type="POST" enctype="multipart/form-data">
           <div class="card-body">
               <div class="form-group">
-              	<input type="text" class="form-control" :class="error.name.status"  placeholder="Nombre" v-model="form.name">
+              	<input type="text" class="form-control" :class="error.name.status" placeholder="Nombre" v-model="form.name">
                 <div class="invalid-feedback">
                   {{ error.name.message[0] }}
                 </div>
@@ -28,15 +27,15 @@
               	<label id="dropzone" for="file" class="btn btn-primary btn-block mb-0">
               		<i class="fas fa-file-image"></i> Subir un ícono
               	</label>
-              	<input type="file" id="file" class="d-none is-invalid" @change="uploadIcon" accept="image/">
+              	<input type="file" id="file" class="d-none is-invalid" accept="image/" @change="uploadIcon">
                 <sub class="d-block mt-2 text-error">
                   {{ error.icon.message[0] }}
                 </sub>
               </div>
           </div>
           <div class="card-header border-top">
-          	<button type="submit" class="btn btn-primary" @click.prevent="addPartner">
-          		Agregar
+          	<button type="submit" class="btn btn-primary" @click.prevent="updatePartner()">
+          		Actualizar
           	</button>
           </div>
           </form>
@@ -50,12 +49,12 @@
             <h6 class="m-0">Vista previa</h6>
           </div>
           <div class='card-body p-2 d-flex justify-content-center'>
-            <i class="fas fa-images display-3 mt-4 mb-4 text-light" v-if="!form.icon"></i>
-						<img :src="icon.src" class=""/>
+						<img :src="image.src" v-if="this.form.icon == '' || this.form.icon == undefined"/>
+            <img :src="icon.src" v-if="this.form.icon"/>
           </div>
           <div class="card-footer">
-          	<button class="btn btn-secondary" v-if="form.icon" @click.prevent="deleteIcon">
-             <i class="fas fa-trash"></i> 
+          	<button class="btn btn-secondary" v-if="form.icon" @click.prevent="deleteIcon()">
+              <i class="fas fa-trash"></i> 
             </button>
           </div>
           <div class="card-footer border-top" v-if="form.icon">
@@ -78,26 +77,21 @@
 	</div>
 </template>
 
-<style>
-  #iconPreview i {
-    font-size: 3em;
-  }
-  .text-error {
-    color: #c4183c;
-  }
-</style>
-
 <script>
-  import axios from 'axios';
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
+				partner: [],
 				form: {
 					name: '',
 					url: '',
 					description: '',
 					icon: ''
 				},
+        image: {
+          src: ''
+        },
         icon: {
           src: '',
           width: '',
@@ -116,8 +110,53 @@
 			}
 		},
 
+		mounted() {
+			this.getPartner();
+		},
+
 		methods: {
-			addPartner() {
+			getPartner() {
+				axios.get('http://integralit.test/api/partner/' + this.$route.params.name)
+					.then(response => {
+						this.partner = response.data;
+            this.form.name = this.partner.name;
+            this.form.url = this.partner.url;
+            this.form.description = this.partner.description;
+            this.image.src = this.partner.icon;
+            this.convertToBase64();
+					})
+					.catch(err => {
+						console.log(err);
+					})
+			},
+
+      convertToBase64() {
+        
+
+      },
+
+      uploadIcon(e) {
+        this.form.icon = e.target.files[0];
+        console.log(this.form.icon);
+
+        let reader = new FileReader();
+        reader.readAsDataURL(this.form.icon);
+
+        reader.onload = e => {
+          this.icon.src = e.target.result;     
+          let image = new Image();
+          image.src = this.icon.src;
+          this.icon.width = image.width;
+          this.icon.height = image.height;
+        };
+      },
+
+      deleteIcon() {
+        this.form.icon = '';
+        this.icon.src = '';
+      },
+
+      updatePartner() {
         this.error.name.status = '';
         this.error.name.message = '';
 
@@ -129,21 +168,17 @@
         formData.append('name', this.form.name);
         formData.append('url', this.form.url);
         formData.append('description', this.form.description);
-        formData.append('icon', this.form.icon);
+        if(this.form.icon) {
+          formData.append('icon', this.form.icon);
+        }
 
-				axios.post('http://integralit.test/api/partner', formData,{
+        axios.put('http://integralit.test/api/partner/'+this.partner.id, formData,{
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           })
           .then(response => {
-            this.$toasted.show("<i class='fas fa-handshake'></i> ¡Partner agregado!", { 
-               theme: "toasted-primary", 
-               position: "top-right", 
-               duration : 2000
-            });
-            window.scrollTo(0, 0);
-            this.cleanInputs();
+            this.successResponse();
           })
           .catch(err => {
             let errors = err.response.data.errors;
@@ -160,38 +195,13 @@
                 break;
             }
           });
-			},
+      },
 
-			uploadIcon(e) {
-        this.form.icon = e.target.files[0];
-        console.log(this.form.icon);
-
-				let reader = new FileReader();
-        reader.readAsDataURL(this.form.icon);
-
-				reader.onload = e => {
-          this.icon.src = e.target.result;     
-          let image = new Image();
-          image.src = this.icon.src;
-          this.icon.width = image.width;
-          this.icon.height = image.height;
-        };
-
-			},
-
-			deleteIcon() {
-				this.form.icon = '';
-        this.icon.src = '';
-			},
-
-      cleanInputs() {
-        this.form.name = '';
-        this.form.url = '';
-        this.form.description = '';
-        this.form.icon = '';
-        this.icon = '';
+      successResponse() {
+        this.$router.replace('/partners');
+        window.scrollTo(0, 0);
       }
+
 		}
 	}
 </script>
-

@@ -67,8 +67,8 @@
             <span>Partners</span>
           </a>
           <div class="dropdown-menu dropdown-menu-small">
-            <router-link to="/partner" class="dropdown-item" >Listar</router-link>
-            <router-link to="/partner/agregar" class="dropdown-item">Agregar</router-link>
+            <router-link to="/partners" class="dropdown-item" >Listar</router-link>
+            <router-link to="/agregar/partner" class="dropdown-item">Agregar</router-link>
           </div>
         </li>
         <li class="nav-item dropdown">

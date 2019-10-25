@@ -5,21 +5,23 @@
 			  <span class="text-uppercase page-subtitle">Partners</span>
 			  <h3 class="page-title">Visión general</h3>
 		  </div>
-	  	</div>
+	  </div>
 		<div class="row">
-			<div v-for="(item, index) of partners" class="col-lg-3 col-md-6 col-sm-12 mb-4">
-				<div class="card card-small card-post card-post--1">
-					<div class="card-body text-center">
-						<img :src="item.icon"/>
-					</div>
-					<div class="card-footer border-top text-primary">
-						<span class="badge badge-secondary mr-2" @click.prevent="deletePartner(item.id, index)">
-							<i class="fas fa-trash"/>
-						</span>
-						<span class="badge badge-secondary"><i class="fas fa-edit"></i></span>
-					</div>
+				<div v-for="(item, index) of partners" class="col-lg-3 col-md-6 col-sm-12 mb-4">
+					<router-link :to="'/partner/' + item.name">
+						<div class="card card-small card-post card-post--1">
+							<div class="card-body text-center">
+								<img :src="item.icon"/>
+							</div>
+							<div class="card-footer border-top text-primary">
+								<span class="badge badge-secondary mr-2" @click.prevent="deletePartner(item.id, index)">
+									<i class="fas fa-trash"/>
+								</span>
+								<span class="badge badge-secondary"><i class="fas fa-edit"></i></span>
+							</div>
+						</div>
+					</router-link>
 				</div>
-			</div>
 		</div>
 	</div>
 </template>

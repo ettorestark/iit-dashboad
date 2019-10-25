@@ -1,14 +1,21 @@
 const routes = [
 	{
-		path: '/partner',
+		path: '/partners',
 		component: () => import('@/views/dashboard/partners/List.vue'),
 		meta: {
 			auth: true
 		}
 	},
 	{
-		path: '/partner/agregar',
+		path: '/agregar/partner',
 		component: () => import('@/views/dashboard/partners/Add.vue'),
+		meta: {
+			auth: true
+		}
+	},
+	{
+		path: '/partner/:name',
+		component: () => import('@/views/dashboard/partners/View.vue'),
 		meta: {
 			auth: true
 		}
