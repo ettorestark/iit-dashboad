@@ -39,6 +39,10 @@ const mutations = {
 
 	check_err(state) {
 		state.status = 'error';
+	},
+
+	update_profile_picture(state, photo) {
+		state.user.photo = photo;
 	}
 };
 

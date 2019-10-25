@@ -47,17 +47,12 @@
             }
           })
           .then(response => {
-              this.$store.dispatch('verifyUser')
-            .then(response => {
-              next();
-            })
-            .catch(err => {
-              console.log(err);
-            })
+              this.successfulResponse(response.data);
           });
       },
 
-      successfulResponse() {
+      successfulResponse(data) {
+        this.$store.commit('update_profile_picture', data)
         this.$toasted.show("<i class='fas fa-handshake'></i> Foto actualizada!", { 
            theme: "toasted-primary", 
            position: "top-right", 

@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
 						next();
 					})
 					.catch(err => {
-						console.log(err);
+						next('/');
 					})
 			}else {
 				next();
