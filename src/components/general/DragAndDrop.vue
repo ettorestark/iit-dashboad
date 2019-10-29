@@ -1,8 +1,9 @@
 <template>
 	<div>
-		<input type="file" id="file" class="d-none"/>
+		<input type="file" id="file" class="d-none" @change="fileSelected"/>
 		<label id="dropZone" for="file" draggable="true" :class="border">
 			<span class="message">
+				<i class="fas fa-cloud-upload-alt"></i>
 				{{ message }}
 			</span>
 		</label>
@@ -55,6 +56,10 @@
 		},
 
 		methods: {
+			fileSelected(e) {
+				this.processAFile(e.target.files[0]);
+			},
+
 			dragEnter() {
 				this.border = 'success-border';
 				this.text = 'success-border';
@@ -76,10 +81,13 @@
 
 			drop(e) {
 				e.preventDefault();
-				let file = e.dataTransfer.files[0];
-				this.$emit('file', file);
-				this.convertToBase64(file);
+				this.processAFile(e.dataTransfer.files[0]);
 				this.border = 'default-border';
+			},
+
+			processAFile(file) {
+					this.$emit('file', file);
+					this.convertToBase64(file);
 			},
 
 			convertToBase64(file) {

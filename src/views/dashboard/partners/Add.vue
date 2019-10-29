@@ -27,6 +27,8 @@
               <div class="form-group">
               	<drag-and-drop
                   message="Presiona o arrastra y suelta un archivo"
+                  @file="setFile"
+                  @base64="setBase64"
                 />
               </div>
           </div>
@@ -102,36 +104,16 @@
 			}
 		},
 
-    mounted() {
-      let dropzone = document.getElementById('dropzone');
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-      });
-
-      dropzone.addEventListener('dragenter', () => {
-        dropzone.style.border = '2px dashed #28A745';
-        dropzone.style.color = '#28A745';
-      });
-
-      dropzone.addEventListener('dragleave', () => {
-        dropzone.style.border = '2px dashed #DC3545';
-        dropzone.style.color = '#DC3545';
-      });
-
-      dropzone.addEventListener('drop', (e) => {
-        this.form.icon = e.dataTransfer.files[0];
-        this.convertToBase64();
-        e.preventDefault();
-      });
-
-      dropzone.addEventListener('dragend', (e) => {
-        console.log('Terminó');
-        e.preventDefault();
-      });
-    },
-
 		methods: {
-			addPartner() {
+			setFile(data) {
+        this.form.icon = data;
+      },
+
+      setBase64(data) {
+        this.icon.src = data;
+      },
+
+      addPartner() {
         this.error.name.status = '';
         this.error.name.message = '';
 
@@ -145,7 +127,7 @@
         formData.append('description', this.form.description);
         formData.append('icon', this.form.icon);
 
-				axios.post('http://integralit.test/api/partner', formData,{
+        axios.post('http://integralit.test/api/partner', formData,{
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -174,24 +156,6 @@
                 break;
             }
           });
-			},
-
-			uploadIcon(e) {
-        this.form.icon = e.target.files[0];
-        convertToBase64();
-			},
-
-      convertToBase64() {
-        let reader = new FileReader();
-        reader.readAsDataURL(this.form.icon);
-
-        reader.onload = e => {
-          this.icon.src = e.target.result;     
-          let image = new Image();
-          image.src = this.icon.src;
-          this.icon.width = image.width;
-          this.icon.height = image.height;
-        };
       },
 
 			deleteIcon() {
