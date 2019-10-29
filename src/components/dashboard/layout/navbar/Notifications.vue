@@ -10,12 +10,12 @@
       <a class="dropdown-item" href="#">
         <div class="notification__icon-wrapper">
           <div class="notification__icon">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-exclamation-triangle"></i>
           </div>
         </div>
         <div class="notification__content">
-          <span class="notification__category">Suscriptores</span>
-          <p>Se han suscrito 100 usuarios al boletín en esta semana.</p>
+          <span class="notification__category">Advertencia</span>
+          <p>Aún no tienes notificaciones.</p>
         </div>
       </a>
       <a class="dropdown-item notification__all text-center" href="#"> Ver todas las notificaciones</a>

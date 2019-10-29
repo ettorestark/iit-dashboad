@@ -25,14 +25,9 @@
               	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
               </div>
               <div class="form-group">
-              	<label id="dropzone" for="file" draggable="true">
-              		<i class="fas fa-cloud-upload-alt mr-2"></i>
-                  <span class="d-block">Presiona o arrastra y suelta archivos</span>
-              	</label>
-              	<input type="file" id="file" class="d-none is-invalid" @change="uploadIcon" accept="image/">
-                <sub class="d-block mt-2 text-error">
-                  {{ error.icon.message[0] }}
-                </sub>
+              	<drag-and-drop
+                  message="Presiona o arrastra y suelta un archivo"
+                />
               </div>
           </div>
           <div class="card-header border-top">
@@ -73,43 +68,14 @@
 	</div>
 </template>
 
-<style>
-  #preview {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  #dropzone {
-    width: 100%;
-    height: 20vh;
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed #CCC;
-  }
-
-  .drag-enter {
-    border: 2px dashed #28A745;
-  }
-
-  .drag-leave {
-    border: 2px dashed #DC3545;
-  }
-
-  #dropzone i {
-    font-size: 2em;
-  }
-
-
-
-  .text-error {
-    color: #c4183c;
-  }
-</style>
-
 <script>
   import axios from 'axios';
+  import DragAndDrop from '@/components/general/DragAndDrop.vue'
 	export default {
+    components: {
+      'drag-and-drop': DragAndDrop
+    },
+
 		data() {
 			return {
 				form: {
