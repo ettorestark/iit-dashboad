@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<input type="file" id="file" class="d-none" @change="fileSelected"/>
-		<label id="dropZone" for="file" draggable="true" :class="border">
+		<label id="dropZone" for="file" draggable="true" :class="[border, text]">
 			<span class="message">
 				<i class="fas fa-cloud-upload-alt"></i>
 				{{ message }}
@@ -19,10 +19,6 @@
 		align-items: center;
 		padding: 2em;
 		font-size: 1.5em;
-	}
-
-	#dropZone .message {
-		display: block;
 	}
 
 	.default-border { border: 2px dashed #aaaaaa; }
@@ -62,7 +58,7 @@
 
 			dragEnter() {
 				this.border = 'success-border';
-				this.text = 'success-border';
+				this.text = 'success-text';
 			},
 
 			dragOver(e) {
@@ -71,7 +67,7 @@
 
 			dragLeave() {
 				this.border = 'error-border';
-				this.text = 'error-border';
+				this.text = 'error-text';
 				console.log('Leave');
 			},
 

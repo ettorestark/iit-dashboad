@@ -1,20 +1,20 @@
 const routes = [
 	{
-		path: '/partners',
+		path: '/categorias',
 		component: () => import('@/views/dashboard/partners/List.vue'),
 		meta: {
 			auth: true
 		}
 	},
 	{
-		path: '/agregar/partner',
+		path: '/agregar/categoria',
 		component: () => import('@/views/dashboard/partners/Add.vue'),
 		meta: {
 			auth: true
 		}
 	},
 	{
-		path: '/partner/:name',
+		path: '/categoria/:slug',
 		component: () => import('@/views/dashboard/partners/Edit.vue'),
 		meta: {
 			auth: true

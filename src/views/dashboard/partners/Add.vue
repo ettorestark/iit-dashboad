@@ -40,7 +40,7 @@
           </form>
         </div>
       </div>
-      <div class="col-lg-3 col-md-12">
+      <div class="d-none d-md-inline-block col-lg-3 col-md-12">
         <div class='card card-small mb-3'>
           <div class="card-header border-bottom">
             <h6 class="m-0">Vista previa</h6>
