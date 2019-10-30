@@ -3,24 +3,25 @@ import VueRouter from 'vue-router'
 import store from '../store/store.js'
 
 //IMPORT ROUTES
-import auth from './auth'
-import miscellanies from './miscellanies'
-import home from './home'
-import profile from './profile'
-import activityCenter from './activityCenter'
-import messageCenter from './messageCenter'
-import users from './users';
-import user from './user';
-import projects from './projects';
-import partners from './partners';
-import posts from './posts';
-import tags from './tags';
+import auth from './routes/auth'
+import miscellanies from './routes/miscellanies'
+import home from './routes/home'
+import profile from './routes/profile'
+import activityCenter from './routes/activityCenter'
+import messageCenter from './routes/messageCenter'
+import users from './routes/users';
+import user from './routes/user';
+import projects from './routes/projects';
+import partners from './routes/partners';
+import posts from './routes/posts';
+import tags from './routes/tags';
+import categories from './routes/categories';
 
 
 Vue.use(VueRouter);
 
 var allRoutes = [];
-allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, user, posts, projects, partners, tags);
+allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, user, posts, projects, partners, tags, categories);
 
 const routes = allRoutes;
 
