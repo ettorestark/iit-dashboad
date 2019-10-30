@@ -88,7 +88,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-small">
             <router-link to="/etiquetas" class="dropdown-item">Listar</router-link>
-            <a class="dropdown-item " href="user-profile-lite.html">Agregar</a>
+            <router-link to="/agregar/etiqueta" class="dropdown-item" >Agregar</router-link>
           </div>
         </li>
       </ul>
