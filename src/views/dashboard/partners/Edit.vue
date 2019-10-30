@@ -24,14 +24,11 @@
               	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
               </div>
               <div class="form-group">
-                <label id="dropzone" for="file">
-                  <i class="fas fa-cloud-upload-alt mr-2"></i>
-                  <span class="d-block">Presiona o arrastra y suelta archivos</span>
-                </label>
-                <input type="file" id="file" class="d-none is-invalid" @change="uploadIcon" accept="image/">
-                <sub class="d-block mt-2 text-error">
-                  {{ error.icon.message[0] }}
-                </sub>
+                <drag-and-drop
+                  message="Presiona o arrastra y suelta un archivo"
+                  @file="setFile"
+                  @base64="setBase64"
+                />
               </div>
           </div>
           <div class="card-header border-top">
@@ -99,8 +96,13 @@
 </style>
 
 <script>
+  import DragAndDrop from '@/components/general/DragAndDrop.vue'
 	import axios from 'axios'
 	export default {
+    components: {
+      'drag-and-drop': DragAndDrop
+    },
+
 		data() {
 			return {
 				partner: [],
@@ -144,32 +146,18 @@
             this.form.url = this.partner.url;
             this.form.description = this.partner.description;
             this.image.src = this.partner.icon;
-            this.convertToBase64();
 					})
 					.catch(err => {
 						console.log(err);
 					})
 			},
 
-      convertToBase64() {
-        
-
+      setFile(data) {
+        this.form.icon = data;
       },
 
-      uploadIcon(e) {
-        this.form.icon = e.target.files[0];
-        console.log(this.form.icon);
-
-        let reader = new FileReader();
-        reader.readAsDataURL(this.form.icon);
-
-        reader.onload = e => {
-          this.icon.src = e.target.result;     
-          let image = new Image();
-          image.src = this.icon.src;
-          this.icon.width = image.width;
-          this.icon.height = image.height;
-        };
+      setBase64(data) {
+        this.icon.src = data;
       },
 
       deleteIcon() {
@@ -178,6 +166,47 @@
       },
 
       updatePartner() {
+        if(this.form.icon) {
+          this.updateAll();
+        }else {
+          this.updatePartially();
+        }
+      },
+
+      updatePartially() {
+        this.error.name.status = '';
+        this.error.name.message = '';
+
+        this.error.icon.status = '';
+        this.error.icon.message = '';
+
+        axios.put('http://integralit.test/api/partner/partially/'+this.partner.id, {
+            user_id: this.$store.state.auth.user.id,
+            name: this.form.name,
+            url: this.form.url,
+            description: this.form.description
+          })
+          .then(response => {
+            this.successResponse();
+          })
+          .catch(err => {
+            let errors = err.response.data.errors;
+            switch (err.response.status) {
+              case 422:
+                if(errors.name) {
+                  this.error.name.status = 'is-invalid';
+                  this.error.name.message = errors.name;
+                }
+                if(errors.icon) {
+                  this.error.icon.status = 'is-invalid';
+                  this.error.icon.message = errors.icon;
+                }
+                break;
+            }
+          });
+      },
+
+      updateAll() {
         this.error.name.status = '';
         this.error.name.message = '';
 
@@ -189,11 +218,8 @@
         formData.append('name', this.form.name);
         formData.append('url', this.form.url);
         formData.append('description', this.form.description);
-        if(this.form.icon) {
-          formData.append('icon', this.form.icon);
-        }
 
-        axios.put('http://integralit.test/api/partner/'+this.partner.id, formData,{
+        axios.post('http://integralit.test/api/partner', formData,{
             headers: {
               'Content-Type': 'multipart/form-data'
             }

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<input type="file" id="file" class="d-none" @change="fileSelected"/>
-		<label id="dropZone" for="file" draggable="true" :class="[border, text]">
+		<label id="dropZone" for="file" draggable="true" :class="border">
 			<span class="message">
 				<i class="fas fa-cloud-upload-alt"></i>
 				{{ message }}

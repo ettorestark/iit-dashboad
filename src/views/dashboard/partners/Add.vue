@@ -5,7 +5,7 @@
 			  <span class="text-uppercase page-subtitle">Partners</span>
 			  <h3 class="page-title">Agregar</h3>
 		  </div>
-	    </div>
+	   </div>
     <div class="row">
       <div class="col-lg-9 col-md-12">
         <!-- Add New Post Form -->
