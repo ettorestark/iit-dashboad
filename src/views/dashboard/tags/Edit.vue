@@ -11,10 +11,10 @@
         <div class="card card-small mb-3">
           <div class="card-body">
             <div class="form-group">
-            	<input type="text" class="form-control" placeholder="Nombre" v-model="form.name">
+            	<input type="text" class="form-control" placeholder="Nombre" v-model="name">
             </div>
             <div class="form-group">
-            	<input type="text" class="form-control" v-model="form.slug" readonly>
+            	<input type="text" class="form-control" v-model="slug" readonly>
             </div>
             <div class="form-group">
             	<textarea rows="4" class="form-control" placeholder="Descripción" v-model="form.description"></textarea>
@@ -38,10 +38,16 @@
 			return {
 				tag: '',
 				form: {
-					name: '',
-					slug: '',
 					description: ''
-				}
+				},
+				name: '',
+				slug: '',
+			}
+		},
+
+		watch: {
+			name: function(data) {
+				this.slug = data.toLowerCase().split(' ').join('_')
 			}
 		},
 
@@ -54,14 +60,27 @@
 				axios.get('http://integralit.test/api/tag/' + this.$route.params.slug)
 					.then(response => {
 						let data = response.data;
-						this.form.name = data.name;
-						this.form.slug = data.slug;
+						this.name = data.name;
+						this.slug = data.slug;
 						this.form.description = data.description;
 					})
 			},
 
 			updateTag() {
-				axios.put('http://integralit.test/api/tag/');
+				axios.put('http://integralit.test/api/tag/' + this.$route.params.slug, {
+					user_id: this.$store.state.auth.user.id,
+					name: this.name,
+					slug: this.slug,
+					description: this.form.description
+				})
+					.then(response => {
+            this.$toasted.show("<i class='fas fa-tags'></i> ¡Etiqueta actualizada!", { 
+               theme: "toasted-primary", 
+               position: "top-right", 
+               duration : 2000
+            });
+            this.$router.replace('/etiquetas');
+					});
 			}
 		}
 	}
