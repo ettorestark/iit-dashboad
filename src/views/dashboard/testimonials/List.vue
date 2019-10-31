@@ -50,8 +50,19 @@
 				this.testimonials = await response.json();
 			},
 
-			async deleteTestimonial() {
-				
+			async deleteTestimonial(id, index) {
+				const location = `integralit.test/api/testimonial/${index}`;
+
+				const settings = {
+					method: 'DELETE',
+				};
+
+				const response = await fetch(`http://${location}`, settings);
+				switch (response.status) {
+					case 200:
+						this.testimonials.splice(index, 1);
+					break;
+				}
 			}
 		}
 	}
