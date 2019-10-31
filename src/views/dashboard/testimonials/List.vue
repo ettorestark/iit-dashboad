@@ -8,7 +8,7 @@
 	   </div>
 		<div class="row">
 		  <div class="col-lg-4" v-for="(item, index) of testimonials">
-		    <router-link to="/" class="no-hover">
+		    <router-link :to="'/testimonio/' + item.slug" class="no-hover">
 		      <div class="card card-small mb-4 pt-3">
 		        <div class="card-body border-bottom text-center">
 		          <div class="mb-3 mx-auto">
