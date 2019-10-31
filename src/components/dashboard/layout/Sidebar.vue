@@ -91,6 +91,16 @@
             <router-link to="/agregar/etiqueta" class="dropdown-item" >Agregar</router-link>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <i class="fas fa-quote-left"></i>
+            <span>Testimonios</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-small">
+            <router-link to="/testimonios" class="dropdown-item">Listar</router-link>
+            <router-link to="/agregar/testimonio" class="dropdown-item" >Agregar</router-link>
+          </div>
+        </li>
       </ul>
     </div>
   </aside>

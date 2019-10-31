@@ -16,12 +16,13 @@ import partners from './routes/partners';
 import posts from './routes/posts';
 import tags from './routes/tags';
 import categories from './routes/categories';
+import testimonials from './routes/testimonials';
 
 
 Vue.use(VueRouter);
 
 var allRoutes = [];
-allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, user, posts, projects, partners, tags, categories);
+allRoutes = allRoutes.concat(auth, miscellanies, home, profile, activityCenter, messageCenter, users, user, posts, projects, partners, tags, categories, testimonials);
 
 const routes = allRoutes;
 
