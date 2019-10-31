@@ -21,9 +21,9 @@
 		font-size: 1.5em;
 	}
 
-	.default-border { border: 2px dashed #aaaaaa; }
-	.success-border { border: 2px dashed #22bb33; }
-  .error-border { border: 2px dashed #bb2124; }
+	.default-border { border: 1.5px dashed #aaaaaa; }
+	.success-border { border: 1.5px dashed #22bb33; }
+  .error-border { border: 1.5px dashed #bb2124; }
 
 	.default-text { border: #aaaaaa; }
 	.success-text { border: #22bb33; }

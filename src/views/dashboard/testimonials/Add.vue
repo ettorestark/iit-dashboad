@@ -151,6 +151,7 @@
 				formData.append('user_id', this.$store.state.auth.user.id);
 				formData.append('name', this.form.name);
 				formData.append('lastname', this.form.lastname);
+				formData.append('slug', this.slug);
 				formData.append('photo', this.form.photo);
 				formData.append('message', this.form.message);
 
@@ -170,20 +171,20 @@
 						break;
 					case 422:
             if(errors.name) {
-                this.error.name.status = 'is-invalid';
-                this.error.name.message = errors.name;
+              this.error.name.status = 'is-invalid';
+              this.error.name.message = errors.name;
             }
             if(errors.lastname) {
-                this.error.lastname.status = 'is-invalid';
-                this.error.lastname.message = errors.lastname;
+              this.error.lastname.status = 'is-invalid';
+              this.error.lastname.message = errors.lastname;
             }
             if(errors.message) {
-                this.error.message.status = 'is-invalid';
-                this.error.message.message = errors.message;
+              this.error.message.status = 'is-invalid';
+              this.error.message.message = errors.message;
             }
             if(errors.photo) {
-                this.error.photo.status = 'is-invalid';
-                this.error.photo.message = errors.photo;
+              this.error.photo.status = 'is-invalid';
+              this.error.photo.message = errors.photo;
             }
 						break;
 				}
